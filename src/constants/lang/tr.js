@@ -2,10 +2,20 @@ const tr = {
   hello: 'Merhaba',
   loading: 'Bekleyiniz',
   cancel: 'Vazgeç',
+  loading: 'Yükleniyor...',
+  connected: 'Araca Bağlı',
+  notConnected: 'Araca Bağlı Değil',
+  close: 'Devre dışı',
+  control_desc: 'Butonları düzenlemek için üzerlerine basılı tutabilirsiniz.',
+  noConnectionPage: {
+    description: 'Bağlantı yokm bla bla yap',
+    text: 'Bağlantı yok'
+  },
   tabs: {
-    dashboard: 'Dashboard',
+    dashboard: 'Veriler',
     settings: 'Ayarlar',
-    control: 'Kontrol'
+    control: 'Kontrol',
+    sensors: 'Sensörler'
   },
   measures: {
     temperature: 'Sıcaklık',
@@ -22,6 +32,7 @@ const tr = {
     language: 'Dil Seçimi :',
     en: 'ingilizce',
     tr: 'türkçe',
+    de: 'almanca',
     hide: 'gizle',
     show: 'göster',
     password: 'Şifre :',
@@ -29,10 +40,54 @@ const tr = {
     theme: 'Tema Seçimi : ',
     dark: 'Karanlık',
     ligth: 'Aydınlık',
-    save: 'kayıt et'
+    save: 'kayıt et',
+    passwordVerifyMessage: 'Şifre 4 haneli olmalı.'
   },
   modals: {
     settingsSuccesfulyUpdate: 'Ayralarınız başarıyla güncellendi.'
+  },
+  icons: {
+    drop: 'Damla',
+    fridge: 'Buzdolabı',
+    heater: 'Isıtıcı',
+    air: 'Havalandırma',
+    toilet: 'Tuvalet',
+    alarm: 'Alarm',
+    fireplace: 'Ateş',
+    tv: 'TV',
+    music_note: 'Müzik',
+    water_damage: 'Su',
+    stairs: 'Merdiven',
+    fire_hydrant: 'Yangın Södürücü',
+    electrical_services: 'Fiş 2',
+    electric_car: 'Araç Şarj',
+    highlight: 'Fener',
+    lightbulb: 'Ampul',
+    lightbulb_outline: 'Ampul 2',
+    power: 'Fiş',
+    speaker: 'Hoparör'
+  },
+  sensors: {
+    lpg: 'LPG ve Doğalgaz Sensörü',
+    fire: 'Yangın Alarmı'
+  },
+  button_settings_modal: {
+    title: 'Buton Ayarları',
+    button_name: 'Buton Adı:',
+    button_icon_title: 'Buton gösterge seçimi:',
+    description: 'Butonun resmini belirlemek için aşağıdakilerden bir tanesini seçiniz.',
+    disable_button: 'Butonu hariç tut:',
+    close: 'Kaydetmeden çık',
+    save: 'Kaydet'
+  },
+  password: {
+    title: 'Şifre Doğrulama',
+    desc1: 'Lütfen belirlemiş olduğunuz 4 haneli',
+    desc2: 'şifreyi giriniz.',
+    login: 'Giriş',
+    warn: 'Uyarı',
+    fail: 'Girilen şifre yanlış. Lütfen tekrar deneyiniz.',
+    wtf: 'Anasayfaya yönlendiriliyorsunuz. Şifrenizi değiştirmenizi öneririrz.'
   }
 }
 export default tr

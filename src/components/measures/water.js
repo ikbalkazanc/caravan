@@ -9,28 +9,16 @@ import { text } from '../../packages/i18n'
 export default function WaterMeasure({ value }) {
   const themes = theme()
   return (
-    <Box
-      justifyContent={'center'}
-      alignItems='center'
-      style={{ ...styles.container, borderColor: themes.color4 }}
-      background={{
-        linearGradient: {
-          colors: [themes.color4, themes.color3],
-          start: [0, 0],
-          end: [1, 1]
-        }
-      }}
-      flex={1}
-    >
+    <Box justifyContent={'center'} alignItems='center' style={{ ...styles.container, borderColor: themes.color4 }} background={themes.color3} flex={1}>
       <WaterDropSvg width='48%' height='47%' />
       <Text style={{ ...styles.pertenge, color: themes.text }}>{value ? value + ' lt.' : '???'}</Text>
-      <Text style={{ ...styles.desc, color: themes.blue }}>{text('measures.water')}</Text>
+      <Text style={{ ...styles.desc, color: themes.text2 }}>{text('measures.water')}</Text>
     </Box>
   )
 }
 const styles = StyleSheet.create({
   container: {
-    borderRadius: wp('5%'),
+    borderRadius: wp('3%'),
     margin: wp('1%')
   },
   pertenge: {

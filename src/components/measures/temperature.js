@@ -11,28 +11,16 @@ import { text } from '../../packages/i18n'
 export default function TemperatureMeasure({ value }) {
   const themes = theme()
   return (
-    <Box
-      justifyContent={'center'}
-      alignItems='center'
-      style={{ ...styles.container, borderColor: themes.color4 }}
-      background={{
-        linearGradient: {
-          colors: [themes.color4, themes.color3],
-          start: [0, 0],
-          end: [1, 1]
-        }
-      }}
-      flex={1}
-    >
+    <Box justifyContent={'center'} alignItems='center' style={{ ...styles.container, borderColor: themes.color4 }} background={themes.color3} flex={1}>
       {themes.status == 'dark' ? <TempForDarkSvg width='50%' height='50%' /> : <TempSvg width='50%' height='50%' />}
       <Text style={{ ...styles.pertenge, color: themes.text }}>{value ? value + ' °C' : '???'}</Text>
-      <Text style={{ ...styles.desc, color: themes.blue }}>{text('measures.temperature')}</Text>
+      <Text style={{ ...styles.desc, color: themes.text2 }}>{text('measures.temperature')}</Text>
     </Box>
   )
 }
 const styles = StyleSheet.create({
   container: {
-    borderRadius: wp('5%'),
+    borderRadius: wp('3%'),
     margin: wp('1%')
   },
   pertenge: {

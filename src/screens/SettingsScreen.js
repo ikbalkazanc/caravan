@@ -30,7 +30,7 @@ export default function SettingsScreen() {
   styles.label = { ...styles.label, color: themes.text }
   styles.input = { ...styles.label, backgroundColor: themes.color3 }
   const successfulMessage = text('modals.settingsSuccesfulyUpdate')
-
+  const passwordVerifyMessage = text('settings.passwordVerifyMessage')
   React.useEffect(() => {
     fetchSettings()
   }, [])
@@ -66,6 +66,11 @@ export default function SettingsScreen() {
   }
 
   const handleSave = () => {
+    if (!(password.length === 0 || password.length === 4)) {
+      Alert.alert(passwordVerifyMessage)
+      return
+    }
+
     getSettings()
       .then((settings) => {
         dispatch(setLoadingCard(true))
@@ -153,22 +158,25 @@ export default function SettingsScreen() {
                 </FormControl>
 
                 <FormControl style={styles.formItem}>
-                  <HStack alignItems='center' space={4}>
+                  <VStack space={4}>
                     <FormControl.Label>
                       <Text style={styles.label}>{text('settings.language')}</Text>
                     </FormControl.Label>
 
                     <Radio.Group value={language} onChange={toggleLanguage}>
-                      <HStack alignItems='center' space={4}>
+                      <HStack alignItems='center' mt={-3} space={4}>
                         <Radio value='en' my={1}>
                           <Text style={styles.label}>{text('settings.en')}</Text>
                         </Radio>
                         <Radio value='tr' my={1}>
                           <Text style={styles.label}>{text('settings.tr')}</Text>
                         </Radio>
+                        <Radio value='de' my={1}>
+                          <Text style={styles.label}>{text('settings.de')}</Text>
+                        </Radio>
                       </HStack>
                     </Radio.Group>
-                  </HStack>
+                  </VStack>
                 </FormControl>
               </Container>
             </Center>

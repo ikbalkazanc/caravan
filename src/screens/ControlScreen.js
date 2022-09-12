@@ -1,12 +1,18 @@
-import { Box, Center, HStack, Container, NativeBaseProvider, VStack } from 'native-base'
+import { Box, Center, HStack, Container, NativeBaseProvider, VStack, Text } from 'native-base'
 import * as React from 'react'
-import { Text, View, ScrollView, SafeAreaView, StyleSheet } from 'react-native'
+import { View, ScrollView, SafeAreaView, StyleSheet } from 'react-native'
 import BatteryMeasure from '../components/measures/battery'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
 import { theme } from '../packages/theme'
 import { ScreenContainer } from 'react-native-screens'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import ControlButton from '../components/control/control-button'
+import { buttons, defaultButtons } from '../constants/data/default-settings'
+import { useSelector } from 'react-redux'
+import HasNoConnection from '../components/has-no-connection'
+import { clearStorage, getSettings } from '../packages/storage'
+import StateService from '../api/StateService'
+import { text } from '../packages/i18n'
 
 const config = {
   dependencies: {
@@ -16,7 +22,29 @@ const config = {
 
 export default function ControlScreen() {
   const themes = theme()
+  const site = useSelector((state) => state.site)
+  const [buttons, setButtons] = React.useState(null)
+  const [state, updateState] = React.useState()
+  const forceUpdate = React.useCallback(() => updateState({}), [])
+  const desc = text('control_desc')
+  React.useEffect(() => {
+    getSettings().then((settings) => {
+      setButtons(settings.buttons)
+    })
+  }, [state])
 
+  const clickButton = async (code, state) => {
+    await StateService.setPinState(code, state)
+  }
+
+  const renderButton = (button, key) => {
+    const value = site.data.buttons[button.order - 1] ? site.data.buttons[button.order - 1] : false
+    return (
+      <View key={key} style={{ width: '33%', padding: '2%' }}>
+        <ControlButton triggerParentComponent={forceUpdate} callback={clickButton} id={button.id} state={value} name={button.name} isDisabled={button.disable} icon={button.icon} code={button.code} />
+      </View>
+    )
+  }
   return (
     <NativeBaseProvider config={config}>
       <SafeAreaView>
@@ -30,19 +58,34 @@ export default function ControlScreen() {
           }}
           style={{ height: '100%' }}
         >
-          <ScrollView style={styles.scroll}>
-            <Center style={styles.container}>
-              <HStack space={3} justifyContent='center'>
-                <Center h={wp('30%')} w={wp('30%')} bg={themes.color3} rounded='md' shadow={3} style={styles.button}>
-                  <Text style={{ ...styles.label, color: themes.blue }}>Işık 1</Text>
-                  <Icon name='settings' size={wp('15%')} color={themes.blue} />
-                  <View style={styles.indicator}></View>
-                </Center>
-                <ControlButton state={true} icon={'settings'} code={'AAA'} />
-                <Center w={'30%'} bg='primary.300' rounded='md' shadow={3} />
-              </HStack>
-            </Center>
-          </ScrollView>
+          {site.connection ? (
+            <ScrollView>
+              <Box mt={wp('2%')} p={1} style={styles.categoryItems}>
+                {buttons ? (
+                  [...buttons]
+                    .sort((a, b) => {
+                      if (a.disable) {
+                        return a - b
+                      }
+                      if (b.disable) {
+                        return b - a
+                      }
+                      return a.order > b.order ? 1 : -1
+                    })
+                    .map((button, key) => {
+                      return renderButton(button, key)
+                    })
+                ) : (
+                  <></>
+                )}
+              </Box>
+              <Text mb={wp('2%')} color={themes.text} justifyContent={'center'} alignSelf='center'>
+                {desc}
+              </Text>
+            </ScrollView>
+          ) : (
+            <HasNoConnection />
+          )}
         </Box>
       </SafeAreaView>
     </NativeBaseProvider>
@@ -50,17 +93,9 @@ export default function ControlScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    width: '100%',
-    padding: wp('5%')
-  },
-  indicator: {
-    marginTop: '10%',
-    height: wp('1.7%'),
-    backgroundColor: 'red',
-    width: '80%',
-    borderRadius: wp('3%'),
-    bottom: 0
-  },
-  label: {}
+  categoryItems: {
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    marginTop: wp('1%')
+  }
 })

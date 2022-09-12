@@ -1,6 +1,7 @@
 import { Box, Center, Container, HStack, NativeBaseProvider, VStack } from 'native-base'
-import * as React from 'react'
-import { Text, View, ScrollView, SafeAreaView } from 'react-native'
+import React, { useState } from 'react'
+
+import { Text, View, ScrollView, SafeAreaView, StyleSheet } from 'react-native'
 import HumidityMeasure from '../components/measures/humidity'
 import WaterMeasure from '../components/measures/water'
 import WasteWaterMeasure from '../components/measures/waste-water'
@@ -8,6 +9,8 @@ import TemperatureMeasure from '../components/measures/temperature'
 import BatteryMeasure from '../components/measures/battery'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
 import { theme } from '../packages/theme'
+import { useSelector } from 'react-redux'
+import HasNoConnection from '../components/has-no-connection'
 
 const config = {
   dependencies: {
@@ -17,6 +20,7 @@ const config = {
 
 export default function DashboardScreen() {
   const themes = theme()
+  const site = useSelector((state) => state.site)
   return (
     <NativeBaseProvider config={config}>
       <SafeAreaView>
@@ -30,33 +34,44 @@ export default function DashboardScreen() {
           }}
           style={{ height: '100%' }}
         >
-          <ScrollView>
-            <Container>
-              <HStack>
-                <VStack h={wp('50%')} w={wp('50%')}>
-                  <HumidityMeasure value={10} />
-                </VStack>
-                <VStack h={wp('50%')} w={wp('50%')}>
-                  <WaterMeasure value={100} />
-                </VStack>
-              </HStack>
-              <HStack>
-                <VStack h={wp('50%')} w={wp('50%')}>
-                  <WasteWaterMeasure value={10} />
-                </VStack>
-                <VStack h={wp('50%')} w={wp('50%')}>
-                  <BatteryMeasure value={10} />
-                </VStack>
-              </HStack>
-              <HStack>
-                <VStack h={wp('50%')} w={wp('50%')}>
-                  <TemperatureMeasure value={90} />
-                </VStack>
-              </HStack>
-            </Container>
-          </ScrollView>
+          {site.connection ? (
+            <ScrollView>
+              <Center style={styles.container}>
+                <HStack>
+                  <VStack h={wp('50%')} w={wp('50%')} p={wp('1%')}>
+                    <HumidityMeasure value={site.data.humidity} />
+                  </VStack>
+                  <VStack h={wp('50%')} w={wp('50%')} p={wp('1%')}>
+                    <TemperatureMeasure value={site.data.temperature} />
+                  </VStack>
+                </HStack>
+                <HStack>
+                  <VStack h={wp('50%')} w={wp('50%')} p={wp('1%')}>
+                    <WasteWaterMeasure value={site.data.wasteWater} />
+                  </VStack>
+                  <VStack h={wp('50%')} w={wp('50%')} p={wp('1%')}>
+                    <WaterMeasure value={site.data.water} />
+                  </VStack>
+                </HStack>
+                <HStack>
+                  <VStack h={wp('50%')} w={wp('50%')} p={wp('1%')}>
+                    <BatteryMeasure value={site.data.battery} />
+                  </VStack>
+                </HStack>
+              </Center>
+            </ScrollView>
+          ) : (
+            <HasNoConnection></HasNoConnection>
+          )}
         </Box>
       </SafeAreaView>
     </NativeBaseProvider>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    width: '100%',
+    padding: wp('3%')
+  }
+})

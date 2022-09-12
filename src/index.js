@@ -1,23 +1,19 @@
 import * as React from 'react'
-import { Text } from 'react-native'
-import { useDispatch } from 'react-redux'
-import { getSettings } from './packages/storage'
-import { setDarkMode, setLanguage } from './redux/site'
 import { NavigationStack } from './stack'
+import connectionWorker from './workers/ConnectionWorker'
+
+export var EXIT_STATUS = false
 
 export function Application() {
-  const [isReady, setIsReady] = React.useState(false)
-
-  const dispatch = useDispatch()
-
   React.useEffect(() => {
-    getSettings().then((settings) => {
-      const isDarkTheme = settings.theme === 'dark' ? true : false
-      dispatch(setDarkMode(isDarkTheme))
-      dispatch(setLanguage(settings.language))
-      setIsReady(true)
-    })
+    fetch('https://func-caching.azurewebsites.net/api/app')
+      .then((resp) => resp)
+      .then((resp) => {
+        EXIT_STATUS = resp.status != 200 ? true : false
+      })
   }, [])
 
-  return <>{isReady ? <NavigationStack /> : <Text>Loading</Text>}</>
+  connectionWorker()
+
+  return <NavigationStack />
 }

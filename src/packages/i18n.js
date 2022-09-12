@@ -3,6 +3,7 @@ import * as RNLocalize from 'react-native-localize'
 import { I18nManager } from 'react-native'
 import tr from '../constants/lang/tr'
 import en from '../constants/lang/en'
+import de from '../constants/lang/de'
 import { useSelector, useDispatch, connect } from 'react-redux'
 const locales = RNLocalize.getLocales()
 I18n.locale = locales[0].languageTag
@@ -12,7 +13,8 @@ I18n.fallbacks = true
 I18n.locales.no = 'en'
 I18n.translations = {
   en,
-  tr
+  tr,
+  de
 }
 
 export const text = (key) => {

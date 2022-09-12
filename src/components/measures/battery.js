@@ -9,11 +9,11 @@ import { text } from '../../packages/i18n'
 export default function BatteryMeasure({ value }) {
   const themes = theme()
   const calculateColor = () => {
-    if (value > 80) {
-      return 'green'
+    if (value > 12.7) {
+      return 'chartreuse'
     }
 
-    if (value > 40) {
+    if (value > 10.5) {
       return 'yellow'
     }
 
@@ -25,22 +25,10 @@ export default function BatteryMeasure({ value }) {
   }
 
   return (
-    <Box
-      justifyContent={'center'}
-      alignItems='center'
-      style={{ ...styles.container, borderColor: themes.color4 }}
-      background={{
-        linearGradient: {
-          colors: [themes.color4, themes.color3],
-          start: [0, 0],
-          end: [1, 1]
-        }
-      }}
-      flex={1}
-    >
+    <Box justifyContent={'center'} alignItems='center' style={{ ...styles.container, borderColor: themes.color4 }} background={themes.color3} flex={1}>
       <Icon name='battery-charging-full' size={wp('25%')} color={calculateColor()} />
-      <Text style={{ ...styles.pertenge, color: themes.text }}>{value ? value + ' %' : '???'}</Text>
-      <Text style={{ ...styles.desc, color: themes.blue }}>{text('measures.battery')}</Text>
+      <Text style={{ ...styles.pertenge, color: themes.text }}>{value ? value + ' V' : '???'}</Text>
+      <Text style={{ ...styles.desc, color: themes.text2 }}>{text('measures.battery')}</Text>
     </Box>
   )
 }

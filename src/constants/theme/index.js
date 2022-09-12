@@ -12,12 +12,12 @@ export const dark = {
 
 export const light = {
   status: 'light',
-  blue: '#FFFFFF',
-  color1: '#FFFFFF',
-  color2: '#FFFFFF',
-  color3: '#FFFFFF',
-  color4: '#FFFFFF',
-  color5: '#FFFFFF',
-  text: '#000',
-  text2: '#000'
+  blue: '#007acc',
+  color1: '#E3E3E3',
+  color2: '#CCCCCC',
+  color3: '#F2F2F2',
+  color4: '#B3B3B3',
+  color5: '#7D7D7D',
+  text: '#141414',
+  text2: '#FFF'
 }
