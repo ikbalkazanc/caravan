@@ -18,11 +18,11 @@ I18n.translations = {
 }
 
 export const text = (key) => {
-  const state = useSelector((state) => state.site)
+  const state = useSelector((state) => state.language)
   return I18n.t(key, { locale: state.lang })
 }
 
 export const getCurrentLanguage = () => {
-  const state = useSelector((state) => state.site)
+  const state = useSelector((state) => state.language)
   return state.lang
 }

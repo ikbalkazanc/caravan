@@ -9,7 +9,8 @@ import { getCurrentLanguage, text } from '../packages/i18n'
 import { normalizeHeigth } from '../packages/responsive'
 import { clearStorage, getSettings, setSettings } from '../packages/storage'
 import { theme } from '../packages/theme'
-import { setLanguage, setLoadingCard } from '../redux/site'
+import { setLanguage } from '../redux/language'
+import { setLoadingCard } from '../redux/site'
 import { setDarkMode } from '../redux/theme'
 
 const config = {
@@ -23,7 +24,7 @@ export default function SettingsScreen() {
   const [ip, onChangeIp] = React.useState('')
   const [port, onChangePort] = React.useState('')
   const [password, onChangePassword] = React.useState('')
-  const [language, setLangauge] = React.useState(getCurrentLanguage())
+  const [language, setComponentLangauge] = React.useState(getCurrentLanguage())
   const [themeSwitch, setSwitch] = React.useState(false)
 
   const [showPassword, setShowPassword] = React.useState(false)
@@ -46,7 +47,7 @@ export default function SettingsScreen() {
       onChangePassword(settings.password ? settings.password : '')
       const themeSettings = settings.theme == 'dark' ? true : false
       setSwitch(!themeSettings)
-      setLangauge(settings.language ? settings.language : 'tr')
+      setComponentLangauge(settings.language ? settings.language : 'tr')
     })
   }
 
@@ -63,8 +64,9 @@ export default function SettingsScreen() {
   const toggleLanguage = (newLangauge) => {
     getSettings().then((settings) => {
       settings.language = newLangauge
+      console.log(language)
       language ? dispatch(setLanguage(settings.language)) : () => {}
-      setLangauge(settings.language)
+      setComponentLangauge(settings.language)
       setSettings(settings)
     })
   }

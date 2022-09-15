@@ -4,17 +4,12 @@ import { defaultState } from '../constants/data/default-state'
 export const site = createSlice({
   name: 'site',
   initialState: {
-    lang: 'tr',
-    dark: false,
     loading: false,
     connection: false,
     intervals: [],
     data: defaultState
   },
   reducers: {
-    setLanguage: (state, action) => {
-      state.lang = action.payload
-    },
     setLoadingCard: (state, action) => {
       state.loading = action.payload
     },
@@ -27,6 +22,6 @@ export const site = createSlice({
   }
 })
 
-export const { setLoadingCard, setLanguage, setStateData, setConnectionState } = site.actions
+export const { setLoadingCard, setStateData, setConnectionState } = site.actions
 
 export default site.reducer
