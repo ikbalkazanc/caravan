@@ -10,7 +10,6 @@ import { normalizeHeigth } from '../packages/responsive'
 import { clearStorage, getSettings, setSettings } from '../packages/storage'
 import { theme } from '../packages/theme'
 import { setLanguage } from '../redux/language'
-import { setLoadingCard } from '../redux/site'
 import { setDarkMode } from '../redux/theme'
 
 const config = {

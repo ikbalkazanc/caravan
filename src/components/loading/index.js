@@ -1,3 +1,4 @@
+/*
 import * as React from 'react'
 import { Box, NativeBaseProvider } from 'native-base'
 import { Dimensions, Text, TouchableHighlight, TouchableOpacity, View } from 'react-native'
@@ -37,3 +38,4 @@ export function LoadingCard() {
     </View>
   )
 }
+*/

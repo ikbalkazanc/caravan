@@ -10,7 +10,6 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import { hasProxies } from 'immer/dist/internal'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
 import SettingsScreen from './screens/SettingsScreen'
-import { LoadingCard } from './components/loading'
 import { useSelector } from 'react-redux'
 import ControlScreen from './screens/ControlScreen'
 import { createStackNavigator } from '@react-navigation/stack'
@@ -47,12 +46,6 @@ function PasswordStackScreen({ navigation }) {
 
 function LoadingStackScreen({ navigation }) {
   return <LoadingScreen navigation={navigation} />
-}
-
-const generateLoadingCard = (state) => {
-  if (state) {
-    return <LoadingCard />
-  }
 }
 
 const Tab = createBottomTabNavigator()
@@ -188,8 +181,6 @@ export function NavigationStack() {
           <Stack.Screen options={{ headerShown: false }} name='App' component={isTablet() ? TabTabletScreens : TabScreens} />
         </Stack.Navigator>
       </NavigationContainer>
-
-      {generateLoadingCard(state.loading)}
     </>
   )
 }
