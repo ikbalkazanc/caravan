@@ -9,7 +9,8 @@ import { getCurrentLanguage, text } from '../packages/i18n'
 import { normalizeHeigth } from '../packages/responsive'
 import { clearStorage, getSettings, setSettings } from '../packages/storage'
 import { theme } from '../packages/theme'
-import { setDarkMode, setLanguage, setLoadingCard } from '../redux/site'
+import { setLanguage, setLoadingCard } from '../redux/site'
+import { setDarkMode } from '../redux/theme'
 
 const config = {
   dependencies: {

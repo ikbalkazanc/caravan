@@ -12,9 +12,6 @@ export const site = createSlice({
     data: defaultState
   },
   reducers: {
-    setDarkMode: (state, action) => {
-      state.dark = action.payload
-    },
     setLanguage: (state, action) => {
       state.lang = action.payload
     },
@@ -30,6 +27,6 @@ export const site = createSlice({
   }
 })
 
-export const { setLoadingCard, setDarkMode, setLanguage, setStateData, setConnectionState } = site.actions
+export const { setLoadingCard, setLanguage, setStateData, setConnectionState } = site.actions
 
 export default site.reducer

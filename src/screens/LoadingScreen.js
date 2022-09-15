@@ -3,7 +3,8 @@ import * as React from 'react'
 import { Text, Center, View, StyleSheet, ActivityIndicator } from 'react-native'
 import { useDispatch } from 'react-redux'
 import { getSettings } from '../packages/storage'
-import { setDarkMode, setLanguage } from '../redux/site'
+import { setLanguage } from '../redux/site'
+import { setDarkMode } from '../redux/theme'
 
 export default function LoadingScreen({ navigation }) {
   const dispatch = useDispatch()
