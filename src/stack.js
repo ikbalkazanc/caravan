@@ -18,9 +18,15 @@ import PasswordScreen from './screens/PasswordScreen'
 import LoadingScreen from './screens/LoadingScreen'
 import SensorScreen from './screens/SensorScreen'
 import ConnectionState from './components/header/connection-state'
+import { isTablet } from './packages/device-info'
+import TabletPanelScreen from './screens/tablet/TabletPanelScreen'
 
 function DashboardTabScreen({ navigation }) {
   return <DashboardScreen />
+}
+
+function TabletPanelTabScreen({ navigation }) {
+  return <TabletPanelScreen />
 }
 
 function SettingsTabScreen({ navigation }) {
@@ -123,6 +129,54 @@ const TabScreens = () => {
   )
 }
 
+const TabTabletScreens = () => {
+  const themes = theme()
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        activeTintColor: themes.blue,
+        inactiveTintColor: themes.text,
+        tabBarActiveTintColor: themes.blue,
+        tabBarItemStyle: {
+          color: 'white'
+        },
+        style: {
+          borderTopColor: themes.blue,
+          backgroundColor: 'transparent',
+          elevation: 0
+        },
+        headerStyle: {
+          backgroundColor: themes.color4
+        },
+        headerTintColor: themes.text,
+        headerTitleStyle: {
+          fontWeight: 'bold'
+        },
+        tabBarStyle: { backgroundColor: themes.color4, color: themes.text, height: hp('8%') }
+      }}
+    >
+      <Tab.Screen
+        options={{
+          title: text('tabs.panel'),
+          tabBarIcon: (props) => <Icon name='dashboard' size={30} color={props.color} />,
+          headerRight: rightHeaderComponent
+        }}
+        name='Home'
+        component={TabletPanelTabScreen}
+      />
+      <Tab.Screen
+        options={{
+          title: text('tabs.settings'),
+          tabBarIcon: (props) => <Icon name='settings' size={30} color={props.color} />,
+          headerRight: rightHeaderComponent
+        }}
+        name='Home3'
+        component={SettingsTabScreen}
+      />
+    </Tab.Navigator>
+  )
+}
+
 export function NavigationStack() {
   const state = useSelector((state) => state.site)
   return (
@@ -131,7 +185,7 @@ export function NavigationStack() {
         <Stack.Navigator>
           <Stack.Screen options={{ headerShown: false, orientation: 'landscape' }} name='Loading' component={LoadingStackScreen} />
           <Stack.Screen options={{ headerShown: false }} name='Password' component={PasswordStackScreen} />
-          <Stack.Screen options={{ headerShown: false }} name='App' component={TabScreens} />
+          <Stack.Screen options={{ headerShown: false }} name='App' component={isTablet() ? TabTabletScreens : TabScreens} />
         </Stack.Navigator>
       </NavigationContainer>
 

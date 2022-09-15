@@ -5,7 +5,7 @@ import { Container, Header, Content, Button, H1, NativeBaseProvider, Center, Box
 import { CommonActions } from '@react-navigation/native'
 import ShieldSvg from '../public/assets/svg/shield.svg'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
-
+import { normalizeHeigth, normalizeWidth } from '../packages/responsive'
 import { getSettings } from '../packages/storage'
 import { CodeField, Cursor, useBlurOnFulfill, useClearByFocusCell } from 'react-native-confirmation-code-field'
 import { theme } from '../packages/theme'
@@ -18,7 +18,7 @@ const config = {
 }
 const { Value, Text: AnimatedText } = Animated
 const CELL_SIZE = 70
-const CELL_BORDER_RADIUS = wp('3%')
+const CELL_BORDER_RADIUS = normalizeWidth('3%')
 
 const CELL_COUNT = 4
 
@@ -185,16 +185,16 @@ export default PasswordScreen
 const styles = StyleSheet.create({
   codeFieldRoot: {
     height: CELL_SIZE,
-    marginTop: hp('2%'),
+    marginTop: normalizeHeigth('2%'),
     justifyContent: 'center'
   },
   cell: {
-    marginHorizontal: hp('1%'),
+    marginHorizontal: normalizeHeigth('1%'),
     height: CELL_SIZE,
     width: CELL_SIZE,
     lineHeight: CELL_SIZE - 5,
     ...Platform.select({ web: { lineHeight: 65 } }),
-    fontSize: wp('8%'),
+    fontSize: normalizeWidth('8%', 0.5),
     textAlign: 'center',
     borderRadius: CELL_BORDER_RADIUS,
 
@@ -211,26 +211,26 @@ const styles = StyleSheet.create({
     elevation: 3
   },
   title: {
-    paddingTop: hp('8%'),
+    paddingTop: normalizeHeigth('8%'),
     fontSize: 25,
     fontWeight: '700',
     textAlign: 'center',
-    paddingBottom: hp('5%')
+    paddingBottom: normalizeHeigth('5%')
   },
   subTitle: {
-    paddingTop: hp('4%'),
+    paddingTop: normalizeHeigth('4%'),
     textAlign: 'center'
   },
   nextButton: {
-    marginTop: hp('4%'),
-    borderRadius: hp('1%'),
-    height: hp('8%'),
+    marginTop: normalizeHeigth('4%'),
+    borderRadius: normalizeHeigth('1%'),
+    height: normalizeHeigth('8%', 0.5),
     justifyContent: 'center',
     alignItems: 'center',
     minWidth: 300
   },
   nextButtonText: {
-    fontSize: wp('4%'),
+    fontSize: normalizeWidth('4%'),
     fontWeight: '700'
   }
 })

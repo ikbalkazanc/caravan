@@ -18,7 +18,7 @@ class StateService {
     if (Math.floor(Math.random() * 10) > 5) {
       return ['56-24-43-10.9-32-01AA-1-0-1-0-1-0-1-0-1-0-0-1-1-1', false]
     }
-    return ['11-23-140-9-22-01AA-1-1-0-0-0-0-1-0-0-0-0-0-0-0', false]
+    return ['11-23-140-9-22-01AA-0-1-0-1-0-1-1-1-0-1-0-1-0-0', false]
   }
 
   async setPinState(code, state) {
@@ -26,17 +26,17 @@ class StateService {
 
     if (!settings.ip) {
       alert('ip doldur.')
-      return
+      return false
     }
 
     if (!settings.port) {
       alert('port doldur.')
-      return
+      return false
     }
 
     if (!code) {
       alert('code doldur.')
-      return
+      return false
     }
 
     const path = `http://${settings.ip}:${settings.port}/?State=${code}${state}`
@@ -44,7 +44,10 @@ class StateService {
       //await fetch(path)
     } catch (err) {
       console.log('Fetch başarısız', err)
+      return false
     }
+
+    return true
   }
 }
 

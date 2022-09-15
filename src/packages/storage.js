@@ -38,5 +38,6 @@ export const setSettings = async (settings) => {
 
 export const clearStorage = async () => {
   await AsyncStorage.clear()
+  SETTING_BUFFER = undefined
   console.log('storage temizlendi')
 }

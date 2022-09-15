@@ -37,25 +37,25 @@ export default function DashboardScreen() {
           {site.connection ? (
             <ScrollView>
               <Center style={styles.container}>
-                <HStack>
-                  <VStack h={wp('50%')} w={wp('50%')} p={wp('1%')}>
-                    <HumidityMeasure value={site.data.humidity} />
+                <HStack space={2}>
+                  <VStack>
+                    <HumidityMeasure size={wp('48%')} value={site.data.humidity} />
                   </VStack>
-                  <VStack h={wp('50%')} w={wp('50%')} p={wp('1%')}>
-                    <TemperatureMeasure value={site.data.temperature} />
-                  </VStack>
-                </HStack>
-                <HStack>
-                  <VStack h={wp('50%')} w={wp('50%')} p={wp('1%')}>
-                    <WasteWaterMeasure value={site.data.wasteWater} />
-                  </VStack>
-                  <VStack h={wp('50%')} w={wp('50%')} p={wp('1%')}>
-                    <WaterMeasure value={site.data.water} />
+                  <VStack>
+                    <TemperatureMeasure size={wp('48%')} value={site.data.temperature} />
                   </VStack>
                 </HStack>
-                <HStack>
-                  <VStack h={wp('50%')} w={wp('50%')} p={wp('1%')}>
-                    <BatteryMeasure value={site.data.battery} />
+                <HStack space={2} mt={wp('2%')}>
+                  <VStack>
+                    <WasteWaterMeasure size={wp('48%')} value={site.data.wasteWater} />
+                  </VStack>
+                  <VStack>
+                    <WaterMeasure size={wp('48%')} value={site.data.water} />
+                  </VStack>
+                </HStack>
+                <HStack space={2} mt={wp('2%')}>
+                  <VStack>
+                    <BatteryMeasure size={wp('48%')} value={site.data.battery} />
                   </VStack>
                 </HStack>
               </Center>

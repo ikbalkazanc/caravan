@@ -1,13 +1,12 @@
-import { Box, VStack, Text, Button, HStack, Input, Radio, Checkbox } from 'native-base'
+import { Box, Button, Checkbox, HStack, Input, Text, VStack } from 'native-base'
 import * as React from 'react'
-import { Pressable, StyleSheet, View, Modal, ScrollView } from 'react-native'
-import Icon from 'react-native-vector-icons/MaterialIcons'
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
+import { Modal, ScrollView, StyleSheet, View } from 'react-native'
 import { icons, svgs } from '../../constants/data/default-settings'
-import { clearStorage, getSettings, setSettings } from '../../packages/storage'
-import MyIcon from '../my-icon'
 import { dark } from '../../constants/theme'
-import { text } from '../../packages/i18n'
+import { isTablet } from '../../packages/device-info'
+import { normalizeHeigth, normalizeWidth } from '../../packages/responsive'
+import { getSettings, setSettings } from '../../packages/storage'
+import MyIcon from '../my-icon'
 export default function ButtonSettingsModal({ code, isVisible, setModalVisible, initName, initIcon, triggerParentComponent, isDisabled, language }) {
   const [name, onChangeName] = React.useState(initName)
   const [disable, onChangeDisable] = React.useState(isDisabled)
@@ -38,7 +37,7 @@ export default function ButtonSettingsModal({ code, isVisible, setModalVisible, 
     >
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
-          <ScrollView>
+          <ScrollView nestedScrollEnabled={true}>
             <Text style={styles.modalText}>{language.text.title}</Text>
             <Box mb={'3%'}>
               <Text style={styles.sectionText}>{language.text.button_name} </Text>
@@ -47,12 +46,12 @@ export default function ButtonSettingsModal({ code, isVisible, setModalVisible, 
             <Box>
               <Text style={styles.sectionText}>{language.text.button_icon_title} </Text>
               <Box width={'100%'} style={{ borderColor: 'black', borderWidth: 0.5 }} alignItems='center' mt={'2%'} mb={'3%'}>
-                <MyIcon icon={selectedIcon} size={wp('25%')} width={wp('25%')} height={wp('25%')} color={dark.blue} />
+                <MyIcon icon={selectedIcon} size={normalizeWidth('25%')} width={normalizeWidth('25%')} height={normalizeWidth('25%')} color={dark.blue} />
               </Box>
               <Text mb={'2%'} style={styles.iconSelectDescription}>
                 {language.text.description}
               </Text>
-              <ScrollView style={styles.scroll}>
+              <ScrollView nestedScrollEnabled={true} style={styles.scroll}>
                 {allIcons.map((i, key) => {
                   return (
                     <View
@@ -111,9 +110,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 20,
     padding: '4%',
-    width: '90%'
+    width: isTablet() ? '50%' : '90%'
   },
-  scroll: { height: hp('20%'), paddingHorizontal: 5, backgroundColor: '#EBEBEB' },
+  scroll: { height: normalizeHeigth('20%'), paddingHorizontal: 5, backgroundColor: '#EBEBEB' },
   button: {
     borderRadius: 20,
     padding: 10,
@@ -127,13 +126,14 @@ const styles = StyleSheet.create({
   },
   sectionText: {
     fontWeight: 'bold',
-    fontSize: wp('3.8%')
+    fontSize: normalizeWidth('3.8%'),
+    lineHeight: normalizeHeigth('2.1%')
   },
   modalText: {
-    margin: '2%',
     fontWeight: 'bold',
-    fontSize: wp('4.2%'),
-    textAlign: 'center'
+    fontSize: normalizeWidth('4.2%'),
+    textAlign: 'center',
+    lineHeight: normalizeHeigth('3%')
   },
   iconSelectDescription: {
     textAlign: 'center'

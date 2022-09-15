@@ -21,7 +21,7 @@ const config = {
   }
 }
 
-export default function DashboardScreen() {
+export default function SensorScreen() {
   const themes = theme()
   const site = useSelector((state) => state.site)
   return (

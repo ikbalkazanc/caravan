@@ -5,12 +5,14 @@ import { theme } from '../../packages/theme'
 import WaterDropSvg from '../../public/assets/svg/water-drop'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
 import { text } from '../../packages/i18n'
+import { normalizeWidth } from '../../packages/responsive'
 
-export default function WaterMeasure({ value }) {
+export default function WaterMeasure({ value, size, style }) {
   const themes = theme()
+  const sizeStyle = size ? { width: size, height: size } : {}
   return (
-    <Box justifyContent={'center'} alignItems='center' style={{ ...styles.container, borderColor: themes.color4 }} background={themes.color3} flex={1}>
-      <WaterDropSvg width='48%' height='47%' />
+    <Box justifyContent={'center'} alignItems='center' style={{ ...styles.container, borderColor: themes.color4, ...style, ...sizeStyle }} background={themes.color3} flex={1}>
+      <WaterDropSvg width={normalizeWidth('12%')} height={normalizeWidth('12%')} />
       <Text style={{ ...styles.pertenge, color: themes.text }}>{value ? value + ' lt.' : '???'}</Text>
       <Text style={{ ...styles.desc, color: themes.text2 }}>{text('measures.water')}</Text>
     </Box>
@@ -18,16 +20,13 @@ export default function WaterMeasure({ value }) {
 }
 const styles = StyleSheet.create({
   container: {
-    borderRadius: wp('3%'),
-    margin: wp('1%')
+    borderRadius: normalizeWidth('3%')
   },
   pertenge: {
-    fontSize: wp('12%'),
-    marginTop: wp('1%'),
+    fontSize: normalizeWidth('12%', 0.5),
     fontWeight: 'bold'
   },
   desc: {
-    marginTop: -wp('3%'),
-    fontSize: wp('4%')
+    fontSize: normalizeWidth('4%', 0.5)
   }
 })

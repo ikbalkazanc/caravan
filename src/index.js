@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { NavigationStack } from './stack'
 import connectionWorker from './workers/ConnectionWorker'
-
+import Orientation, { OrientationLocker } from 'react-native-orientation-locker'
+import { isTablet } from './packages/device-info'
 export var EXIT_STATUS = false
 
 export function Application() {

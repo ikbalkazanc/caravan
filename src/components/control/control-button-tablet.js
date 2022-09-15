@@ -7,9 +7,11 @@ import { Center, View } from 'native-base'
 import { useState } from 'react'
 import ButtonSettingsModal from '../modal/button-settings-modal'
 import MyIcon from '../my-icon'
+import { clearStorage } from '../../packages/storage'
 import { text } from '../../packages/i18n'
+import { normalizeWidth } from '../../packages/responsive'
 
-export default function ControlButton({ state, icon, name, code, isDisabled, triggerParentComponent, callback }) {
+export default function ControlTabletButton({ state, icon, name, code, isDisabled, triggerParentComponent, callback }) {
   const [modalVisible, setModalVisible] = useState(false)
   const [currentState, setState] = useState(state)
   if (state !== currentState) {
@@ -59,16 +61,16 @@ export default function ControlButton({ state, icon, name, code, isDisabled, tri
           })
         }}
       >
-        <Center style={styles.container} h={wp('30%')} w={wp('30%')} bg={calculateColor()} rounded='md' shadow={3}>
+        <Center style={styles.container} h={wp('12%')} w={wp('12%')} bg={calculateColor()} rounded='md' shadow={3}>
           {isDisabled ? (
             <>
               <Text style={{ ...styles.label, color: themes.blue }}>{closeText}</Text>
-              <Icon name={'close'} size={wp('15%')} color={themes.color4} />
+              <Icon name={'close'} size={wp('6%')} color={themes.color4} />
             </>
           ) : (
             <>
               <Text style={{ ...styles.label, color: themes.blue }}>{name}</Text>
-              <MyIcon icon={currentIcon} size={wp('15%')} width={wp('15%')} height={wp('15%')} color={themes.blue} />
+              <MyIcon icon={currentIcon} size={wp('6%')} width={wp('6%')} height={wp('6%')} color={themes.blue} />
               <View style={{ ...styles.indicator, backgroundColor: stateColor() }}></View>
             </>
           )}
@@ -79,14 +81,14 @@ export default function ControlButton({ state, icon, name, code, isDisabled, tri
 }
 const styles = StyleSheet.create({
   container: {
-    padding: wp('1%')
+    padding: normalizeWidth('1%')
   },
   indicator: {
     marginTop: '10%',
-    height: wp('1.7%'),
+    height: normalizeWidth('1.6%'),
     backgroundColor: 'red',
-    width: '80%',
-    borderRadius: wp('3%'),
+    width: '60%',
+    borderRadius: normalizeWidth('3%'),
     bottom: 0
   }
 })

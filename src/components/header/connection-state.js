@@ -5,6 +5,7 @@ import { theme } from '../../packages/theme'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
 import { text } from '../../packages/i18n'
+import { normalizeWidth } from '../../packages/responsive'
 
 export default function ConnectionState({ value }) {
   const themes = theme()
@@ -22,15 +23,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
-    paddingRight: wp('3%')
+    paddingRight: normalizeWidth('3%')
   },
   text: {
-    marginRight: wp('2%'),
-    fontSize: wp('4%')
+    marginRight: normalizeWidth('2%'),
+    fontSize: normalizeWidth('4%')
   },
   circle: {
-    width: wp('5.4%'),
-    height: wp('5.4%'),
+    width: normalizeWidth('5.4%'),
+    height: normalizeWidth('5.4%'),
     borderRadius: 100,
     backgroundColor: 'red'
   }

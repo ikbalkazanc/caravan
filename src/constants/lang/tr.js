@@ -15,7 +15,8 @@ const tr = {
     dashboard: 'Veriler',
     settings: 'Ayarlar',
     control: 'Kontrol',
-    sensors: 'Sensörler'
+    sensors: 'Sensörler',
+    panel: 'Panel'
   },
   measures: {
     temperature: 'Sıcaklık',
@@ -30,6 +31,14 @@ const tr = {
     port: 'Port Adresi :',
     portPlaceholder: 'Örn. 8080',
     language: 'Dil Seçimi :',
+    reset: {
+      button: 'Tüm ayarları sıfırlayın',
+      success: 'Başarılı bir şekilde tüm ayarlar resetlendi.',
+      areYouSure: 'Tüm ayarlarınız sıfırlanacak. Emin misiniz?',
+      cancel: 'Vazgeç',
+      approve: 'Tamam',
+      warn: 'Uyarı'
+    },
     en: 'ingilizce',
     tr: 'türkçe',
     de: 'almanca',

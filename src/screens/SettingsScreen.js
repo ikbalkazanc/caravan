@@ -1,10 +1,12 @@
-import { set } from 'immer/dist/internal'
 import { Box, Button, Center, Container, FormControl, Heading, HStack, Input, NativeBaseProvider, Radio, Stack, VStack } from 'native-base'
 import * as React from 'react'
 import { Text, View, ScrollView, SafeAreaView, TextInput, StyleSheet, Switch, Alert } from 'react-native'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
 import { useDispatch } from 'react-redux'
+import { defaultSettings } from '../constants/data/default-settings'
+import { isTablet } from '../packages/device-info'
 import { getCurrentLanguage, text } from '../packages/i18n'
+import { normalizeHeigth } from '../packages/responsive'
 import { clearStorage, getSettings, setSettings } from '../packages/storage'
 import { theme } from '../packages/theme'
 import { setDarkMode, setLanguage, setLoadingCard } from '../redux/site'
@@ -31,6 +33,7 @@ export default function SettingsScreen() {
   styles.input = { ...styles.label, backgroundColor: themes.color3 }
   const successfulMessage = text('modals.settingsSuccesfulyUpdate')
   const passwordVerifyMessage = text('settings.passwordVerifyMessage')
+  const resetTexts = text('settings.reset')
   React.useEffect(() => {
     fetchSettings()
   }, [])
@@ -73,17 +76,43 @@ export default function SettingsScreen() {
 
     getSettings()
       .then((settings) => {
-        dispatch(setLoadingCard(true))
         settings.ip = ip
         settings.port = port
         settings.password = password
 
         setSettings(settings)
-        dispatch(setLoadingCard(false))
       })
       .finally(() => {
         Alert.alert(successfulMessage)
       })
+  }
+  const handleResetAreYouSureModal = () => {
+    Alert.alert(
+      resetText.warn,
+      resetTexts.areYouSure,
+      [
+        {
+          text: resetTexts.cancel,
+          style: 'cancel'
+        },
+        {
+          text: resetTexts.approve,
+          onPress: () => {
+            handleReset()
+          }
+        }
+      ],
+      {
+        cancelable: true
+      }
+    )
+  }
+  const handleReset = () => {
+    clearStorage()
+    setSettings(defaultSettings)
+    onChangeIp('')
+    onChangePort('')
+    Alert.alert(successfulMessage)
   }
   return (
     <NativeBaseProvider config={config}>
@@ -178,6 +207,15 @@ export default function SettingsScreen() {
                     </Radio.Group>
                   </VStack>
                 </FormControl>
+
+                <HStack style={styles.formItem} flex={1} justifyContent='flex-end'>
+                  <VStack w='3/6'></VStack>
+                  <VStack w='3/6'>
+                    <Button colorScheme={'danger'} w='full' h='full' onPress={handleResetAreYouSureModal}>
+                      {resetTexts.button}
+                    </Button>
+                  </VStack>
+                </HStack>
               </Container>
             </Center>
           </ScrollView>
@@ -189,7 +227,8 @@ export default function SettingsScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%'
+    width: '100%',
+    paddingHorizontal: isTablet() ? normalizeHeigth('20%') : 0
   },
   formItem: {
     marginTop: hp('3%')
