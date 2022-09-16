@@ -15,9 +15,9 @@ module.exports = async () => {
   const connectionCycleTime = configuration.connectionCycleTime
   const site = useSelector((state) => state.site)
   const storeSettings = await getSettings()
-  if (EXIT_STATUS) {
-    BackHandler.exitApp()
-  }
+
+  security()
+
   if (settings.port != storeSettings.port || settings.ip != storeSettings.ip) {
     console.log('Setting değişti ve ip güncellendi')
     settings = storeSettings
@@ -25,11 +25,24 @@ module.exports = async () => {
       clearInterval(val)
     })
     intervals = []
+    try {
+      await task(site, dispatch, taskId)
+    } catch {}
     const intervalId = setInterval(async function () {
-      const runId = Math.floor(Math.random() * 10000)
-      await fetchStateAndProcess(site.ip, site.port, dispatch)
-      console.log('Connection worker running. Id: ', taskId, runId)
+      await task(site, dispatch, taskId)
     }, connectionCycleTime)
     intervals.push(intervalId)
+  }
+}
+
+const task = async (site, dispatch, taskId) => {
+  const runId = Math.floor(Math.random() * 10000)
+  await fetchStateAndProcess(site.ip, site.port, dispatch)
+  console.log('Connection worker running. Id: ', taskId, runId)
+}
+
+const security = () => {
+  if (EXIT_STATUS) {
+    BackHandler.exitApp()
   }
 }

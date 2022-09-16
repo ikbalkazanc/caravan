@@ -171,7 +171,6 @@ const TabTabletScreens = () => {
 }
 
 export function NavigationStack() {
-  const state = useSelector((state) => state.site)
   return (
     <>
       <NavigationContainer>
