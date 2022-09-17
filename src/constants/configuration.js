@@ -1,3 +1,3 @@
 export default configuration = {
-  connectionCycleTime: 1000
+  connectionCycleTime: 3000
 }

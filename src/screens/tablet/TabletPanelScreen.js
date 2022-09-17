@@ -14,6 +14,7 @@ import SensorCard from '../../components/sensors/sensor-card'
 import { sensors } from '../../constants/data/default-settings'
 import { text } from '../../packages/i18n'
 import SensorTabletCard from '../../components/sensors/sensor-card-tablet'
+import KaanDesing from '../../components/kaan-desing'
 
 const config = {
   dependencies: {
@@ -48,20 +49,25 @@ export default function TabletPanelScreen() {
                 </Center>
                 <Center w={'70%'}>
                   <VStack w={'100%'} justifyContent={'space-between'}>
-                    <Center w={'100%'} h={'68%'} borderColor={themes.text} borderWidth={0.5} borderRadius={normalizeWidth('3%')} p={2}>
+                    <Center w={'100%'} h={'78%'} borderColor={themes.text} borderWidth={0.5} borderRadius={normalizeWidth('3%')} p={2}>
                       <ControlScreen />
                     </Center>
-                    <Box w={'100%'} h={'28%'} borderColor={themes.text} borderWidth={0.5} borderRadius={normalizeWidth('3%')} p={3} mt={5}>
-                      <ScrollView horizontal={true}>
-                        <Box flexDirection={'row'} w={'100%'}>
-                          <Box w={'49%'} h={'100%'} mr={4}>
-                            <SensorTabletCard status={site.data.sensors[0]} icon={'fireplace'} title={lpgText} />
+                    <Box w={'100%'} h={'20%'} flexDirection='row' justifyContent={'space-between'}>
+                      <Box h={'100%'} w={'49%'} borderColor={themes.text} borderWidth={0.5} borderRadius={normalizeWidth('3%')} p={3}>
+                        <ScrollView horizontal={true}>
+                          <Box flexDirection={'row'} w={'100%'}>
+                            <Box w={'24%'} h={'100%'} mr={4}>
+                              <SensorTabletCard status={site.data.sensors[0]} icon={'fireplace'} title={lpgText} />
+                            </Box>
+                            <Box w={'24%'} h={'100%'}>
+                              <SensorTabletCard status={site.data.sensors[1]} icon={'fire-hydrant'} title={fireText} />
+                            </Box>
                           </Box>
-                          <Box w={'49%'} h={'100%'}>
-                            <SensorTabletCard status={site.data.sensors[1]} icon={'fire-hydrant'} title={fireText} />
-                          </Box>
-                        </Box>
-                      </ScrollView>
+                        </ScrollView>
+                      </Box>
+                      <Box h={'100%'} w={'49%'} borderColor={themes.text} borderWidth={0.5} borderRadius={normalizeWidth('3%')} p={3}>
+                        <KaanDesing />
+                      </Box>
                     </Box>
                   </VStack>
                 </Center>

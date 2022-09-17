@@ -52,6 +52,7 @@ export default function ControlTabletButton({ state, icon, name, code, isDisable
         onLongPress={() => {
           setModalVisible(true)
         }}
+        delayLongPress={2000}
         onPress={() => {
           const willState = !currentState ? '1' : '0'
           callback(code, willState).then((isSuccess) => {
@@ -64,12 +65,12 @@ export default function ControlTabletButton({ state, icon, name, code, isDisable
         <Center style={styles.container} h={wp('12%')} w={wp('12%')} bg={calculateColor()} rounded='md' shadow={3}>
           {isDisabled ? (
             <>
-              <Text style={{ ...styles.label, color: themes.blue }}>{closeText}</Text>
+              <Text style={{ ...styles.label, color: themes.text }}>{closeText}</Text>
               <Icon name={'close'} size={wp('6%')} color={themes.color4} />
             </>
           ) : (
             <>
-              <Text style={{ ...styles.label, color: themes.blue }}>{name}</Text>
+              <Text style={{ ...styles.label, color: themes.text }}>{name}</Text>
               <MyIcon icon={currentIcon} size={wp('6%')} width={wp('6%')} height={wp('6%')} color={themes.blue} />
               <View style={{ ...styles.indicator, backgroundColor: stateColor() }}></View>
             </>
@@ -90,5 +91,8 @@ const styles = StyleSheet.create({
     width: '60%',
     borderRadius: normalizeWidth('3%'),
     bottom: 0
+  },
+  label: {
+    fontSize: normalizeWidth('2.8%')
   }
 })

@@ -10,7 +10,11 @@ import { normalizeHeigth } from '../packages/responsive'
 import { clearStorage, getSettings, setSettings } from '../packages/storage'
 import { theme } from '../packages/theme'
 import { setLanguage } from '../redux/language'
+import { setStateData } from '../redux/site'
 import { setDarkMode } from '../redux/theme'
+import store from '../redux'
+import { defaultState } from '../constants/data/default-state'
+import { forceUpdate } from './ControlScreen'
 
 const config = {
   dependencies: {
@@ -90,7 +94,7 @@ export default function SettingsScreen() {
   }
   const handleResetAreYouSureModal = () => {
     Alert.alert(
-      resetText.warn,
+      resetTexts.warn,
       resetTexts.areYouSure,
       [
         {
@@ -110,11 +114,14 @@ export default function SettingsScreen() {
     )
   }
   const handleReset = () => {
-    clearStorage()
-    setSettings(defaultSettings)
-    onChangeIp('')
-    onChangePort('')
-    Alert.alert(successfulMessage)
+    clearStorage().then(() => {
+      setSettings({ ...defaultSettings }).then(() => {
+        onChangeIp('')
+        onChangePort('')
+        forceUpdate()
+        Alert.alert(successfulMessage)
+      })
+    })
   }
   return (
     <NativeBaseProvider config={config}>

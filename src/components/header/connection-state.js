@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   },
   text: {
     marginRight: normalizeWidth('2%'),
-    fontSize: normalizeWidth('4%')
+    fontSize: normalizeWidth('3.4%')
   },
   circle: {
     width: normalizeWidth('5.4%'),

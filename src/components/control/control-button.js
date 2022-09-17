@@ -50,6 +50,7 @@ export default function ControlButton({ state, icon, name, code, isDisabled, tri
         onLongPress={() => {
           setModalVisible(true)
         }}
+        delayLongPress={2000}
         onPress={() => {
           const willState = !currentState ? '1' : '0'
           callback(code, willState).then((isSuccess) => {
@@ -62,12 +63,12 @@ export default function ControlButton({ state, icon, name, code, isDisabled, tri
         <Center style={styles.container} h={wp('30%')} w={wp('30%')} bg={calculateColor()} rounded='md' shadow={3}>
           {isDisabled ? (
             <>
-              <Text style={{ ...styles.label, color: themes.blue }}>{closeText}</Text>
+              <Text style={{ ...styles.label, color: themes.text }}>{closeText}</Text>
               <Icon name={'close'} size={wp('15%')} color={themes.color4} />
             </>
           ) : (
             <>
-              <Text style={{ ...styles.label, color: themes.blue }}>{name}</Text>
+              <Text style={{ ...styles.label, color: themes.text }}>{name}</Text>
               <MyIcon icon={currentIcon} size={wp('15%')} width={wp('15%')} height={wp('15%')} color={themes.blue} />
               <View style={{ ...styles.indicator, backgroundColor: stateColor() }}></View>
             </>
@@ -88,5 +89,8 @@ const styles = StyleSheet.create({
     width: '80%',
     borderRadius: wp('3%'),
     bottom: 0
+  },
+  label: {
+    fontSize: wp('2.8%')
   }
 })

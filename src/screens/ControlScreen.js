@@ -37,13 +37,16 @@ const sortButtons = (buttons) => {
   const activeButtons = buttons.filter((x) => !x.disable).sort((x) => x.order)
   return activeButtons.concat(disableButtons)
 }
+var forceUpdate = () => {}
+
+export { forceUpdate }
 
 export default function ControlScreen() {
   const themes = theme()
   const site = useSelector((state) => state.site)
   const [buttons, setButtons] = React.useState(null)
   const [state, updateState] = React.useState()
-  const forceUpdate = React.useCallback(() => {
+  forceUpdate = React.useCallback(() => {
     updateState({})
   }, [])
   const desc = text('control_desc')

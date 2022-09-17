@@ -15,12 +15,11 @@ export default function SensorTabletCard({ status, title, style, icon }) {
 
   return (
     <Box style={{ ...styles.container, ...style }} background={status ? DANGER_COLOR : themes.color3} flexDirection='row'>
-      <View style={styles.icon}>
-        <Icon name={icon} size={normalizeWidth('12%')} color={themes.blue} />
-      </View>
-      <Box width={normalizeWidth('55%')} justifyContent={'center'}>
+      <Box style={styles.icon} justifyContent='center'>
+        <Icon name={icon} size={normalizeWidth('7%')} color={themes.blue} />
+      </Box>
+      <Box width={normalizeWidth('55%')} justifyContent={'center'} alignContent={'center'} alignSelf={'center'} flex={1}>
         <Text style={{ ...styles.title, color: themes.text }}>{title}</Text>
-        <View style={{ ...styles.indicator, backgroundColor: colorStatus }}></View>
       </Box>
     </Box>
   )
@@ -30,22 +29,13 @@ const styles = StyleSheet.create({
     borderRadius: normalizeWidth('3%')
   },
   icon: {
-    marginVertical: normalizeWidth('6%'),
     marginHorizontal: normalizeWidth('3%')
   },
-  indicator: {
-    position: 'absolute',
-    marginBottom: '5%',
-    height: normalizeWidth('1.4%'),
-    width: '90%',
-    borderRadius: normalizeWidth('3%'),
-    bottom: 0
-  },
   title: {
-    top: '10%',
-    fontSize: normalizeWidth('4%'),
-    lineHeight: normalizeWidth('6%'),
+    textAlignVertical: 'center',
+    fontSize: normalizeWidth('2.3%'),
+    lineHeight: normalizeWidth('3%'),
     height: '100%',
-    maxWidth: '80%'
+    maxWidth: '35%'
   }
 })

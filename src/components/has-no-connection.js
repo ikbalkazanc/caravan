@@ -12,7 +12,7 @@ export default function HasNoConnection() {
 
   return (
     <Box justifyContent={'center'} alignItems='center' flex={1}>
-      <Icon name='wifi-off' size={normalizeWidth(60)} color='grey' />
+      <Icon name='wifi-off' size={normalizeWidth(60)} color={themes.status == 'dark' ? themes.color2 : themes.color5} />
       <Text style={{ ...styles.text, color: themes.text }}>{text('noConnectionPage.text')}</Text>
       <Text style={{ ...styles.desc, color: themes.text2 }}>{text('noConnectionPage.description')}</Text>
     </Box>

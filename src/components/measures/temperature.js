@@ -1,6 +1,6 @@
 import { Box } from 'native-base'
 import * as React from 'react'
-import { Text, StyleSheet } from 'react-native'
+import { Text, StyleSheet, Image } from 'react-native'
 import { theme } from '../../packages/theme'
 import TempForDarkSvg from '../../public/assets/svg/temperature-for-dark.svg'
 import TempSvg from '../../public/assets/svg/temperature.svg'
@@ -14,7 +14,8 @@ export default function TemperatureMeasure({ value, size, style }) {
   const sizeStyle = size ? { width: size, height: size } : {}
   return (
     <Box justifyContent={'center'} alignItems='center' style={{ ...styles.container, borderColor: themes.color4, ...style, ...sizeStyle }} background={themes.color3} flex={1}>
-      {themes.status == 'dark' ? <TempForDarkSvg width={normalizeWidth('12%')} height={normalizeWidth('12%')} /> : <TempSvg width={normalizeWidth('12%')} height={normalizeWidth('12%')} />}
+      <Image style={{ width: normalizeWidth('12%'), height: normalizeWidth('12%') }} source={require('../../public/sicak.png')} />
+
       <Text style={{ ...styles.pertenge, color: themes.text }}>{value ? value + ' °C' : '???'}</Text>
       <Text style={{ ...styles.desc, color: themes.text2 }}>{text('measures.temperature')}</Text>
     </Box>

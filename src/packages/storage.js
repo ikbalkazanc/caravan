@@ -33,7 +33,6 @@ export const setSettings = async (settings) => {
     console.log('error: stroage set çalışmadı\n', e)
   }
   SETTING_BUFFER = undefined
-  console.log('storage cache temizlendi')
 }
 
 export const clearStorage = async () => {

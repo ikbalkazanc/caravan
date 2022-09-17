@@ -139,20 +139,21 @@ const TabTabletScreens = () => {
           elevation: 0
         },
         headerStyle: {
-          backgroundColor: themes.color4
+          backgroundColor: themes.status == 'dark' ? themes.color4 : themes.color5
         },
         headerTintColor: themes.text,
         headerTitleStyle: {
           fontWeight: 'bold'
         },
-        tabBarStyle: { backgroundColor: themes.color4, color: themes.text, height: hp('8%') }
+        tabBarStyle: { backgroundColor: themes.status == 'dark' ? themes.color4 : themes.color5, color: themes.text, height: hp('8%') }
       }}
     >
       <Tab.Screen
         options={{
           title: text('tabs.panel'),
-          tabBarIcon: (props) => <Icon name='dashboard' size={30} color={props.color} />,
-          headerRight: rightHeaderComponent
+          tabBarIcon: (props) => <Icon name='dashboard' size={25} color={props.color} />,
+          headerRight: rightHeaderComponent,
+          tabBarLabel: text('tabs.panel2')
         }}
         name='Home'
         component={TabletPanelTabScreen}
@@ -160,7 +161,7 @@ const TabTabletScreens = () => {
       <Tab.Screen
         options={{
           title: text('tabs.settings'),
-          tabBarIcon: (props) => <Icon name='settings' size={30} color={props.color} />,
+          tabBarIcon: (props) => <Icon name='settings' size={25} color={props.color} />,
           headerRight: rightHeaderComponent
         }}
         name='Home3'

@@ -11,14 +11,14 @@ class StateService {
   async fetchSystemState(ip, port) {
     const path = `http://${ip}:${port}/?State=01AA`
     try {
-      //var response = await getMoviesFromApiAsync()
+      const response = await fetch(path)
+      const data = await response.text()
+      return [data, false]
     } catch (err) {
       console.log('Fetch başarısız', err)
+      alert('Path bu    ' + path + '   ' + err)
+      return ['', true]
     }
-    if (Math.floor(Math.random() * 10) > 5) {
-      return ['56-24-43-10.9-32-01AA-1-0-1-0-1-0-1-0-1-0-0-1-1-1', false]
-    }
-    return ['11-23-140-9-22-01AA-0-1-0-1-0-1-1-1-0-1-0-1-0-0', false]
   }
 
   async setPinState(code, state) {
@@ -41,9 +41,10 @@ class StateService {
 
     const path = `http://${settings.ip}:${settings.port}/?State=${code}${state}`
     try {
-      //await fetch(path)
+      await fetch(path)
     } catch (err) {
       console.log('Fetch başarısız', err)
+      alert('Path bu    ' + path + '   ' + err)
       return false
     }
 
@@ -51,13 +52,4 @@ class StateService {
   }
 }
 
-const getMoviesFromApiAsync = async () => {
-  try {
-    const response = await fetch('https://reactnative.dev/movies.json')
-    const json = await response.json()
-    return json.movies
-  } catch (error) {
-    console.error(error)
-  }
-}
 export default new StateService()

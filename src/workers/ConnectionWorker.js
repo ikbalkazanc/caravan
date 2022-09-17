@@ -26,18 +26,19 @@ module.exports = async () => {
     })
     intervals = []
     try {
-      await task(site, dispatch, taskId)
+      await task(dispatch, taskId)
     } catch {}
     const intervalId = setInterval(async function () {
-      await task(site, dispatch, taskId)
+      await task(dispatch, taskId)
     }, connectionCycleTime)
     intervals.push(intervalId)
   }
 }
 
-const task = async (site, dispatch, taskId) => {
+const task = async (dispatch, taskId) => {
   const runId = Math.floor(Math.random() * 10000)
-  await fetchStateAndProcess(site.ip, site.port, dispatch)
+  const storeSettings = await getSettings()
+  await fetchStateAndProcess(storeSettings.ip, storeSettings.port, dispatch)
   console.log('Connection worker running. Id: ', taskId, runId)
 }
 

@@ -1,77 +1,77 @@
 const defaultButtons = [
   {
     name: 'Röle 1',
-    code: '00B',
+    code: '00A',
     icon: 'power',
     order: 1,
     disable: false
   },
   {
     name: 'Röle 2',
-    code: '01B',
+    code: '00B',
     icon: 'power',
     order: 2,
     disable: false
   },
   {
     name: 'Röle 3',
-    code: '05B',
+    code: '00C',
     icon: 'power',
     order: 3,
     disable: false
   },
   {
     name: 'Röle 4',
-    code: '06B',
+    code: '00D',
     icon: 'power',
     order: 4,
     disable: false
   },
   {
     name: 'Röle 5',
-    code: '07B',
+    code: '00E',
     icon: 'power',
     order: 5,
     disable: false
   },
   {
     name: 'Röle 6',
-    code: '08B',
+    code: '00F',
     icon: 'power',
     order: 6,
     disable: false
   },
   {
     name: 'Röle 7',
-    code: '09B',
+    code: '00G',
     icon: 'power',
     order: 7,
     disable: false
   },
   {
     name: 'Röle 8',
-    code: '01A',
+    code: '00H',
     icon: 'power',
     order: 8,
     disable: false
   },
   {
     name: 'Röle 9',
-    code: '01C',
+    code: '00I',
     icon: 'power',
     order: 9,
     disable: false
   },
   {
     name: 'Röle 10',
-    code: '02C',
+    code: '00J',
     icon: 'power',
     order: 10,
     disable: false
   },
   {
     name: 'Röle 11',
-    code: '04C',
+    code: '00K',
     icon: 'power',
     order: 11,
     disable: false

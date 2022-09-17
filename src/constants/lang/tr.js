@@ -3,25 +3,26 @@ const tr = {
   loading: 'Bekleyiniz',
   cancel: 'Vazgeç',
   loading: 'Yükleniyor...',
-  connected: 'Araca Bağlı',
-  notConnected: 'Araca Bağlı Değil',
-  close: 'Devre dışı',
+  connected: 'Bağlantı Var',
+  notConnected: 'Bağlantı Yok',
+  close: 'Devre Dışı',
   control_desc: 'Butonları düzenlemek için üzerlerine basılı tutabilirsiniz.',
   noConnectionPage: {
-    description: 'Bağlantı yokm bla bla yap',
+    description: 'WLAN bağlantısını kontrol ediniz.',
     text: 'Bağlantı yok'
   },
   tabs: {
-    dashboard: 'Veriler',
+    dashboard: 'Sensörler',
     settings: 'Ayarlar',
     control: 'Kontrol',
-    sensors: 'Sensörler',
-    panel: 'Panel'
+    sensors: 'Dedektörler',
+    panel: 'DESING KAAN',
+    panel2: 'Panel'
   },
   measures: {
     temperature: 'Sıcaklık',
     humidity: 'Nem Oranı',
-    wasteWater: 'Atık Su Miktarı',
+    wasteWater: 'Gri Su Miktarı',
     water: 'Temiz Su Miktar',
     battery: 'Batarya'
   },
@@ -77,8 +78,8 @@ const tr = {
     speaker: 'Hoparör'
   },
   sensors: {
-    lpg: 'LPG ve Doğalgaz Sensörü',
-    fire: 'Yangın Alarmı'
+    lpg: 'LPG ve Doğalgaz Dedektörü',
+    fire: 'Yangın Dedektörü'
   },
   button_settings_modal: {
     title: 'Buton Ayarları',

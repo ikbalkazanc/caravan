@@ -13,7 +13,7 @@ export default function WaterMeasure({ value, size, style }) {
   return (
     <Box justifyContent={'center'} alignItems='center' style={{ ...styles.container, borderColor: themes.color4, ...style, ...sizeStyle }} background={themes.color3} flex={1}>
       <WaterDropSvg width={normalizeWidth('12%')} height={normalizeWidth('12%')} />
-      <Text style={{ ...styles.pertenge, color: themes.text }}>{value ? value + ' lt.' : '???'}</Text>
+      <Text style={{ ...styles.pertenge, color: themes.text }}>{value ? value + ' %' : '???'}</Text>
       <Text style={{ ...styles.desc, color: themes.text2 }}>{text('measures.water')}</Text>
     </Box>
   )
