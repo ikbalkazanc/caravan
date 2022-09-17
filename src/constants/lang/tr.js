@@ -1,6 +1,5 @@
 const tr = {
   hello: 'Merhaba',
-  loading: 'Bekleyiniz',
   cancel: 'Vazgeç',
   loading: 'Yükleniyor...',
   connected: 'Bağlantı Var',

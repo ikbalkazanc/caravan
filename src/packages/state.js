@@ -12,6 +12,8 @@ const SENSORS_START_INDEX = 17
 const SENSORS_COUNT = 3
 
 var LAST_DATA = undefined
+const LAST_DATA_EDITED = { value: false }
+export { LAST_DATA_EDITED }
 
 export default fetchStateAndProcess = async (ip, port, dispatch) => {
   const [data, error] = await StateService.fetchSystemState(ip, port)
@@ -26,7 +28,9 @@ export default fetchStateAndProcess = async (ip, port, dispatch) => {
   }
 
   if (LAST_DATA === data || data == undefined) {
-    return
+    if (!LAST_DATA_EDITED.value) {
+      return
+    }
   }
   LAST_DATA = data
 
@@ -46,6 +50,7 @@ export default fetchStateAndProcess = async (ip, port, dispatch) => {
   state.buttons = buttons
   state.sensors = sensors
 
+  LAST_DATA_EDITED.value = false
   dispatch(setStateData(state))
 }
 

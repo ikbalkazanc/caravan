@@ -1,46 +1,102 @@
 const de = {
   hello: 'Merhaba',
-  loading: 'Bekleyiniz',
-  cancel: 'Vazgeç',
-  loading: 'Yükleniyor...',
-  connected: 'Araca Bağlı',
-  notConnected: 'Araca Bağlı Değil',
+  cancel: 'Abbrechen',
+  loading: 'Laden...',
+  connected: 'Verbunden',
+  notConnected: 'Keine Verbindung',
+  close: 'Deaktiviert',
+  control_desc: 'Gedrückt halten, um Schaltflächen zu bearbeiten',
   noConnectionPage: {
-    description: 'Bağlantı yokm bla bla yap',
-    text: 'Bağlantı yok'
+    description: 'WLAN-Verbindung prüfen',
+    text: 'Keine Verbindung'
   },
   tabs: {
-    dashboard: 'Veriler',
-    settings: 'Ayarlar',
-    control: 'Kontrol'
+    dashboard: 'Sensoren',
+    settings: 'Einstellungen',
+    control: 'Steuerung',
+    sensors: 'Detektoren',
+    panel: 'DESING KAAN',
+    panel2: 'Panel'
   },
   measures: {
-    temperature: 'Sıcaklık',
-    humidity: 'Nem Oranı',
-    wasteWater: 'Atık Su Miktarı',
-    water: 'Temiz Su Miktar',
-    battery: 'Batarya'
+    temperature: 'Temperatur',
+    humidity: 'Feuchtigkeit',
+    wasteWater: 'Abwasser',
+    water: 'Sauberes Wasser',
+    battery: 'Batterieladung'
   },
   settings: {
-    ip: 'IP Adresi :',
-    ipPlaceholder: 'Örn. 192.168.1.101',
-    port: 'Port Adresi :',
-    portPlaceholder: 'Örn. 8080',
-    language: 'Dil Seçimi :',
-    en: 'asdasd',
-    tr: 'asdasd',
-    hide: 'gizle',
-    show: 'göster',
-    password: 'Şifre :',
-    passwordPlaceholder: 'Şifre giriniz.',
-    theme: 'Tema Seçimi : ',
-    dark: 'Karanlık',
-    ligth: 'Aydınlık',
-    save: 'kayıt et',
-    passwordVerifyMessage: 'Şifre 4 haneli olmalı.'
+    ip: 'IP-Adresse :',
+    ipPlaceholder: 'Beispiel 192.168.1.101',
+    port: 'Portadresse :',
+    portPlaceholder: 'Beispiel 8080',
+    language: 'Sprachauswahl :',
+    reset: {
+      button: 'Alle Einstellungen zurücksetzen',
+      success: 'Alle Einstellungen wurden erfolgreich zurückgesetzt.',
+      areYouSure: 'Alle Einstellungen werden zurückgesetzt. Bist du dir sicher?',
+      cancel: 'Abbrechen',
+      approve: 'Okay',
+      warn: 'Warnung'
+    },
+    en: 'Englisch',
+    tr: 'Türkisch',
+    de: 'Deutsch',
+    hide: 'Verstecken',
+    show: 'Zeigen',
+    password: 'Kennwort :',
+    passwordPlaceholder: 'Kennwort',
+    theme: 'Themenauswahl : ',
+    dark: 'Dunkel',
+    ligth: 'Licht',
+    save: 'Speichern',
+    passwordVerifyMessage: 'Passwort muss aus 4 Zeichen bestehen'
   },
   modals: {
-    settingsSuccesfulyUpdate: 'Ayralarınız başarıyla güncellendi.'
+    settingsSuccesfulyUpdate: 'Ihre Einstellungen wurden erfolgreich aktualisiert.'
+  },
+  icons: {
+    drop: 'Fallen Lassen',
+    fridge: 'Kühlschrank',
+    heater: 'Heizung',
+    air: 'Klimaanlage',
+    toilet: 'Toilette',
+    alarm: 'Alarm',
+    fireplace: 'Kamin',
+    tv: 'TV',
+    music_note: 'Musik',
+    water_damage: 'Wasserschaden',
+    stairs: 'Treppe',
+    fire_hydrant: 'Feuerhydrant',
+    electrical_services: 'Stecker 2',
+    electric_car: 'Auto aufladen',
+    highlight: 'Hervorheben',
+    lightbulb: 'Glühbirne',
+    lightbulb_outline: 'Glühbirne 2',
+    power: 'Netzstecker',
+    speaker: 'Sprecher'
+  },
+  sensors: {
+    lpg: 'LPG ve Gaz Detector',
+    fire: 'Feuermelder'
+  },
+  button_settings_modal: {
+    title: 'Schaltflächeneinstellungen',
+    button_name: 'Schaltflächenname',
+    button_icon_title: 'Schaltflächensymbolauswahl :',
+    description: 'Symbol auswählen, um Schaltflächensymbol zu definieren.',
+    disable_button: 'Schaltfläche deaktivieren :',
+    close: 'Abbrechen',
+    save: 'Speichern'
+  },
+  password: {
+    title: 'Passwortvalidierung',
+    desc1: 'Bitte geben Sie Ihre 4 ein',
+    desc2: 'Einloggen Einloggen',
+    login: 'Einloggen',
+    warn: 'Warnung',
+    fail: 'Falsches Passwort. Bitte versuche es erneut.',
+    wtf: 'Weiterleitung zur Hauptseite. Wir empfehlen Ihnen, Ihr Passwort zurückzusetzen.'
   }
 }
 export default de

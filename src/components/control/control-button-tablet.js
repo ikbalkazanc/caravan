@@ -10,15 +10,21 @@ import MyIcon from '../my-icon'
 import { clearStorage } from '../../packages/storage'
 import { text } from '../../packages/i18n'
 import { normalizeWidth } from '../../packages/responsive'
+import { LAST_DATA_EDITED } from '../../packages/state'
 
 export default function ControlTabletButton({ state, icon, name, code, isDisabled, triggerParentComponent, callback }) {
   const [modalVisible, setModalVisible] = useState(false)
-  const [currentState, setState] = useState(state)
-  if (state !== currentState) {
-    setState(state)
+  const [____, updateState] = React.useState()
+  var flag = React.useRef(false)
+  if (flag.current) {
+    state = !state
+    flag.current = false
   }
+  const forceUpdate = React.useCallback(() => {
+    updateState({})
+  }, [])
   const themes = theme()
-  const stateColor = () => (currentState ? 'red' : 'lawngreen')
+  const stateColor = () => (state ? 'red' : 'lawngreen')
   const currentIcon = icon ? icon : 'assistant-photo'
   const closeText = text('close')
   const iconsTexts = text('icons')
@@ -28,7 +34,7 @@ export default function ControlTabletButton({ state, icon, name, code, isDisable
     if (isDisabled) {
       return themes.color3
     }
-    return currentState ? themes.color3 : themes.color4
+    return state ? themes.color3 : themes.color4
   }
 
   return (
@@ -54,10 +60,12 @@ export default function ControlTabletButton({ state, icon, name, code, isDisable
         }}
         delayLongPress={2000}
         onPress={() => {
-          const willState = !currentState ? '1' : '0'
+          const willState = !state ? '1' : '0'
           callback(code, willState).then((isSuccess) => {
             if (isSuccess) {
-              setState(!currentState)
+              LAST_DATA_EDITED.value = true
+              flag.current = true
+              forceUpdate()
             }
           })
         }}

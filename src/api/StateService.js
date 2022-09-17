@@ -16,7 +16,7 @@ class StateService {
       return [data, false]
     } catch (err) {
       console.log('Fetch başarısız', err)
-      alert('Path bu    ' + path + '   ' + err)
+      //alert('Path bu    ' + path + '   ' + err)
       return ['', true]
     }
   }
