@@ -16,8 +16,10 @@ export const light = {
   color1: '#F7FBFC',
   color2: '#E4F7FC',
   color3: '#D6E6F2',
-  color4: '#B9D7EA',
+  color4: '#74B0D8',
   color5: '#769FCD',
   text: '#141414',
-  text2: '#FFF'
+  text2: '#666666',
+  custom1: '#80C2EE',
+  custom2: '#FFF'
 }

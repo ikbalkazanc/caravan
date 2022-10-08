@@ -15,7 +15,7 @@ const de = {
     settings: 'Einstellungen',
     control: 'Steuerung',
     sensors: 'Detektoren',
-    panel: 'DESING KAAN',
+    panel: 'IoT KAAN',
     panel2: 'Panel'
   },
   measures: {
@@ -77,7 +77,7 @@ const de = {
     speaker: 'Sprecher'
   },
   sensors: {
-    lpg: 'LPG ve Gaz Detector',
+    lpg: 'LPG- und Gaz-Detektor',
     fire: 'Feuermelder'
   },
   button_settings_modal: {

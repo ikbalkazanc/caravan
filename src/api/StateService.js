@@ -9,7 +9,7 @@ class StateService {
   }
 
   async fetchSystemState(ip, port) {
-    const path = `http://${ip}:${port}/?State=01AA`
+    const path = `http://${ip}:${port}?State=01AA`
     try {
       const response = await fetch(path)
       const data = await response.text()
@@ -18,33 +18,20 @@ class StateService {
       console.log('Fetch başarısız', err)
       //alert('Path bu    ' + path + '   ' + err)
       return ['', true]
+      return ['11-23-140-9-22-01AA-0-1-0-1-0-1-1-1-0-1-0-1-0-0', false]
     }
+    //return ['11-23-140-9-22-01AA-0-1-0-1-0-1-1-1-0-1-0-1-0-0', false]
   }
 
   async setPinState(code, state) {
     const settings = await getSettings()
 
-    if (!settings.ip) {
-      alert('ip doldur.')
-      return false
-    }
-
-    if (!settings.port) {
-      alert('port doldur.')
-      return false
-    }
-
-    if (!code) {
-      alert('code doldur.')
-      return false
-    }
-
-    const path = `http://${settings.ip}:${settings.port}/?State=${code}${state}`
+    const path = `http://${settings.ip}:${settings.port}?State=${code}${state}`
     try {
       await fetch(path)
     } catch (err) {
       console.log('Fetch başarısız', err)
-      alert('Path bu    ' + path + '   ' + err)
+      //alert('Path bu    ' + path + '   ' + err)
       return false
     }
 

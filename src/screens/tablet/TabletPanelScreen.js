@@ -34,7 +34,7 @@ export default function TabletPanelScreen() {
         <Box
           background={{
             linearGradient: {
-              colors: [themes.color4, themes.color3],
+              colors: [themes.status == 'dark' ? themes.color4 : themes.custom1, themes.color3],
               start: [0, 0],
               end: [1, 1]
             }
@@ -57,10 +57,10 @@ export default function TabletPanelScreen() {
                         <ScrollView horizontal={true}>
                           <Box flexDirection={'row'} w={'100%'}>
                             <Box w={'24%'} h={'100%'} mr={4}>
-                              <SensorTabletCard status={site.data.sensors[0]} icon={'fireplace'} title={lpgText} />
+                              <SensorTabletCard status={site.data.sensors ? site.data.sensors[0] : false} icon={'fireplace'} title={lpgText} />
                             </Box>
                             <Box w={'24%'} h={'100%'}>
-                              <SensorTabletCard status={site.data.sensors[1]} icon={'fire-hydrant'} title={fireText} />
+                              <SensorTabletCard status={site.data.sensors ? site.data.sensors[1] : false} icon={'fire-hydrant'} title={fireText} />
                             </Box>
                           </Box>
                         </ScrollView>

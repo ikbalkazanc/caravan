@@ -15,7 +15,7 @@ const tr = {
     settings: 'Ayarlar',
     control: 'Kontrol',
     sensors: 'Dedektörler',
-    panel: 'DESING KAAN',
+    panel: 'IoT KAAN',
     panel2: 'Panel'
   },
   measures: {
@@ -39,17 +39,17 @@ const tr = {
       approve: 'Tamam',
       warn: 'Uyarı'
     },
-    en: 'ingilizce',
-    tr: 'türkçe',
-    de: 'almanca',
-    hide: 'gizle',
-    show: 'göster',
+    en: 'İngilizce',
+    tr: 'Türkçe',
+    de: 'Almanca',
+    hide: 'Gizle',
+    show: 'Göster',
     password: 'Şifre :',
     passwordPlaceholder: 'Şifre giriniz.',
     theme: 'Tema Seçimi : ',
     dark: 'Karanlık',
     ligth: 'Aydınlık',
-    save: 'kayıt et',
+    save: 'Kayıt Et',
     passwordVerifyMessage: 'Şifre 4 haneli olmalı.'
   },
   modals: {

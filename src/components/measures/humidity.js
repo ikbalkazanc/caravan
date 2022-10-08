@@ -13,7 +13,7 @@ export default function HumidityMeasure({ value, size, style }) {
 
   return (
     <Box justifyContent={'center'} alignItems='center' style={{ ...styles.container, borderColor: themes.color4, ...style, ...sizeStyle }} background={themes.color3}>
-      <HumiditySvg width={normalizeWidth('12%')} height={normalizeWidth('12%')} />
+      <HumiditySvg width={normalizeWidth('18%', 0.5)} height={normalizeWidth('18%', 0.5)} />
       <Text style={{ ...styles.pertenge, color: themes.text }}>{value ? value + ' %' : '???'}</Text>
       <Text style={{ ...styles.desc, color: themes.text2 }}>{text('measures.humidity')}</Text>
     </Box>
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     borderRadius: normalizeWidth('3%')
   },
   pertenge: {
-    fontSize: normalizeWidth('12%', 0.5),
+    fontSize: normalizeWidth('12%', 0.3),
     fontWeight: 'bold'
   },
   desc: {

@@ -22,7 +22,7 @@ export default function ControlButton({ state, icon, name, code, isDisabled, tri
     updateState({})
   }, [])
   const themes = theme()
-  const stateColor = () => (state ? 'red' : 'lawngreen')
+  const stateColor = () => (state ? 'lawngreen' : 'red')
   const currentIcon = icon ? icon : 'assistant-photo'
   const closeText = text('close')
   const iconsTexts = text('icons')

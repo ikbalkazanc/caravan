@@ -25,7 +25,7 @@ const config = {
 const bg = (themes) => {
   return {
     linearGradient: {
-      colors: [themes.color4, themes.color3],
+      colors: [themes.status == 'dark' ? themes.color4 : themes.custom1, themes.color3],
       start: [0, 0],
       end: [1, 1]
     }
@@ -49,6 +49,7 @@ export default function ControlScreen() {
   forceUpdate = React.useCallback(() => {
     updateState({})
   }, [])
+
   const desc = text('control_desc')
   React.useEffect(() => {
     getSettings().then((settings) => {
@@ -61,6 +62,10 @@ export default function ControlScreen() {
   }
 
   const renderButton = (button, key) => {
+    if (!site.data.buttons) {
+      return <View key={key}></View>
+    }
+
     const value = site.data.buttons[button.order - 1] ? site.data.buttons[button.order - 1] : false
     if (isTablet()) {
       return (

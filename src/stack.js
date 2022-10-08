@@ -56,6 +56,14 @@ const rightHeaderComponent = () => {
   return <ConnectionState value={state.connection} />
 }
 
+const calculateTabBarColor = (props, themes) => {
+  if (props.focused) {
+    return themes.blue
+  }
+
+  return themes.status == 'dark' ? props.color : themes.text2
+}
+
 const TabScreens = () => {
   const themes = theme()
   return (
@@ -85,7 +93,7 @@ const TabScreens = () => {
       <Tab.Screen
         options={{
           title: text('tabs.dashboard'),
-          tabBarIcon: (props) => <Icon name='dashboard' size={30} color={props.color} />,
+          tabBarIcon: (props) => <Icon name='dashboard' size={30} color={calculateTabBarColor(props, themes)} />,
           headerRight: rightHeaderComponent
         }}
         name='Home'
@@ -94,7 +102,7 @@ const TabScreens = () => {
       <Tab.Screen
         options={{
           title: text('tabs.control'),
-          tabBarIcon: (props) => <Icon name='auto-awesome-motion' size={30} color={props.color} />,
+          tabBarIcon: (props) => <Icon name='auto-awesome-motion' size={30} color={calculateTabBarColor(props, themes)} />,
           headerRight: rightHeaderComponent
         }}
         name='Control'
@@ -103,7 +111,7 @@ const TabScreens = () => {
       <Tab.Screen
         options={{
           title: text('tabs.sensors'),
-          tabBarIcon: (props) => <Icon name='wifi-tethering' size={30} color={props.color} />,
+          tabBarIcon: (props) => <Icon name='wifi-tethering' size={30} color={calculateTabBarColor(props, themes)} />,
           headerRight: rightHeaderComponent
         }}
         name='Sensors'
@@ -112,7 +120,7 @@ const TabScreens = () => {
       <Tab.Screen
         options={{
           title: text('tabs.settings'),
-          tabBarIcon: (props) => <Icon name='settings' size={30} color={props.color} />,
+          tabBarIcon: (props) => <Icon name='settings' size={30} color={calculateTabBarColor(props, themes)} />,
           headerRight: rightHeaderComponent
         }}
         name='Home3'
@@ -151,7 +159,7 @@ const TabTabletScreens = () => {
       <Tab.Screen
         options={{
           title: text('tabs.panel'),
-          tabBarIcon: (props) => <Icon name='dashboard' size={25} color={props.color} />,
+          tabBarIcon: (props) => <Icon name='dashboard' size={25} color={calculateTabBarColor(props, themes)} />,
           headerRight: rightHeaderComponent,
           tabBarLabel: text('tabs.panel2')
         }}
@@ -161,7 +169,7 @@ const TabTabletScreens = () => {
       <Tab.Screen
         options={{
           title: text('tabs.settings'),
-          tabBarIcon: (props) => <Icon name='settings' size={25} color={props.color} />,
+          tabBarIcon: (props) => <Icon name='settings' size={25} color={calculateTabBarColor(props, themes)} />,
           headerRight: rightHeaderComponent
         }}
         name='Home3'

@@ -24,13 +24,17 @@ const config = {
 export default function SensorScreen() {
   const themes = theme()
   const site = useSelector((state) => state.site)
+
+  const gas = text('sensors.'.concat(sensors[0]))
+  const fire = text('sensors.'.concat(sensors[1]))
+
   return (
     <NativeBaseProvider config={config}>
       <SafeAreaView>
         <Box
           background={{
             linearGradient: {
-              colors: [themes.color4, themes.color3],
+              colors: [themes.status == 'dark' ? themes.color4 : themes.custom1, themes.color3],
               start: [0, 0],
               end: [1, 1]
             }
@@ -40,8 +44,8 @@ export default function SensorScreen() {
           {site.connection ? (
             <ScrollView>
               <Center style={styles.container}>
-                <SensorCard status={site.data.sensors[0]} style={{ marginBottom: hp('3%') }} icon={'fireplace'} title={text('sensors.'.concat(sensors[0]))} />
-                <SensorCard status={site.data.sensors[1]} style={{ marginBottom: hp('3%') }} icon={'fire-hydrant'} title={text('sensors.'.concat(sensors[1]))} />
+                <SensorCard status={site.data.sensors ? site.data.sensors[0] : false} style={{ marginBottom: hp('3%') }} icon={'fireplace'} title={gas} />
+                <SensorCard status={site.data.sensors ? site.data.sensors[1] : false} style={{ marginBottom: hp('3%') }} icon={'fire-hydrant'} title={fire} />
               </Center>
             </ScrollView>
           ) : (

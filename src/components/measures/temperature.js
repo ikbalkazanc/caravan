@@ -14,7 +14,7 @@ export default function TemperatureMeasure({ value, size, style }) {
   const sizeStyle = size ? { width: size, height: size } : {}
   return (
     <Box justifyContent={'center'} alignItems='center' style={{ ...styles.container, borderColor: themes.color4, ...style, ...sizeStyle }} background={themes.color3} flex={1}>
-      <Image style={{ width: normalizeWidth('12%'), height: normalizeWidth('12%') }} source={require('../../public/sicak.png')} />
+      <Image style={{ width: normalizeWidth('18%', 0.5), height: normalizeWidth('18%', 0.5) }} source={require('../../public/sicak.png')} />
 
       <Text style={{ ...styles.pertenge, color: themes.text }}>{value ? value + ' °C' : '???'}</Text>
       <Text style={{ ...styles.desc, color: themes.text2 }}>{text('measures.temperature')}</Text>
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     borderRadius: normalizeWidth('3%')
   },
   pertenge: {
-    fontSize: normalizeWidth('12%', 0.5),
+    fontSize: normalizeWidth('12%', 0.3),
     fontWeight: 'bold'
   },
   desc: {

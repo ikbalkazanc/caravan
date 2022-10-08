@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import StateService from '../api/StateService'
 import { defaultState } from '../constants/data/default-state'
 import { setConnectionState, setStateData } from '../redux/site'
+import { defaultSettings } from '../constants/data/default-settings'
 
 import store from '../redux'
 
@@ -16,7 +17,7 @@ const LAST_DATA_EDITED = { value: false }
 export { LAST_DATA_EDITED }
 
 export default fetchStateAndProcess = async (ip, port, dispatch) => {
-  const [data, error] = await StateService.fetchSystemState(ip, port)
+  var [data, error] = await StateService.fetchSystemState(ip, port)
 
   const site = store.getState().site
   if (!verifyConnectionState(data, error, dispatch)) {
@@ -34,7 +35,23 @@ export default fetchStateAndProcess = async (ip, port, dispatch) => {
   }
   LAST_DATA = data
 
-  const datas = data.split('-')
+  var datas = data.split('-')
+
+  if (datas[5] != '01AA') {
+    data = LAST_DATA
+    datas = data.split('-')
+    try {
+      const button = defaultSettings.buttons.find((x) => x.code == data.slice(0, 3))
+      datas[BUTTONS_START_INDEX + button.order - 1] = data[data.length - 1]
+      console.log('Order  ', button.order, ' ', datas[BUTTONS_START_INDEX + button.order - 1], 'oldu')
+    } catch (e) {
+      console.log('Garip algoritma ', e)
+    }
+
+    if (LAST_DATA.slice(0, 2) == '00') {
+      return
+    }
+  }
 
   var state = { ...defaultState }
   state.humidity = datas[0]
@@ -60,6 +77,7 @@ const verifyConnectionState = (data, error, dispatch) => {
     if (failFetchCounter >= 3) {
       dispatch(setStateData({}))
       dispatch(setConnectionState(false))
+      LAST_DATA = undefined
     }
     console.log('fetch fail oldu : ', failFetchCounter)
     return false

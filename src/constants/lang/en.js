@@ -7,7 +7,7 @@ const en = {
   close: 'Disabled',
   control_desc: 'Press and hold to edit buttons.',
   noConnectionPage: {
-    description: 'check WLAN conection',
+    description: 'check your WLAN conection',
     text: 'No Connection'
   },
   tabs: {
@@ -15,7 +15,7 @@ const en = {
     settings: 'Settings',
     control: 'Control',
     sensors: 'Detectors',
-    panel: 'DESING KAAN',
+    panel: 'IoT KAAN',
     panel2: 'Panel'
   },
   measures: {
@@ -77,7 +77,7 @@ const en = {
     speaker: 'Speaker'
   },
   sensors: {
-    lpg: 'LPG ve Gaz Detector',
+    lpg: 'LPG and Gaz Detector',
     fire: 'Fire Detector'
   },
   button_settings_modal: {

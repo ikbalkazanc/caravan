@@ -5,7 +5,6 @@ import { BackHandler } from 'react-native'
 import { addInterval } from '../redux/site'
 import { clearStorage, getSettings, setSettings } from '../packages/storage'
 import fetchStateAndProcess from '../packages/state'
-import { EXIT_STATUS } from '..'
 var intervals = []
 var settings = {}
 
@@ -15,8 +14,6 @@ module.exports = async () => {
   const connectionCycleTime = configuration.connectionCycleTime
   const site = useSelector((state) => state.site)
   const storeSettings = await getSettings()
-
-  security()
 
   if (settings.port != storeSettings.port || settings.ip != storeSettings.ip) {
     console.log('Setting değişti ve ip güncellendi')
@@ -40,10 +37,4 @@ const task = async (dispatch, taskId) => {
   const storeSettings = await getSettings()
   await fetchStateAndProcess(storeSettings.ip, storeSettings.port, dispatch)
   console.log('Connection worker running. Id: ', taskId, runId)
-}
-
-const security = () => {
-  if (EXIT_STATUS) {
-    BackHandler.exitApp()
-  }
 }

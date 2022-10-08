@@ -12,7 +12,7 @@ export default function WaterMeasure({ value, size, style }) {
   const sizeStyle = size ? { width: size, height: size } : {}
   return (
     <Box justifyContent={'center'} alignItems='center' style={{ ...styles.container, borderColor: themes.color4, ...style, ...sizeStyle }} background={themes.color3} flex={1}>
-      <WaterDropSvg width={normalizeWidth('12%')} height={normalizeWidth('12%')} />
+      <WaterDropSvg width={normalizeWidth('18%', 0.5)} height={normalizeWidth('18%', 0.5)} />
       <Text style={{ ...styles.pertenge, color: themes.text }}>{value ? value + ' %' : '???'}</Text>
       <Text style={{ ...styles.desc, color: themes.text2 }}>{text('measures.water')}</Text>
     </Box>
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     borderRadius: normalizeWidth('3%')
   },
   pertenge: {
-    fontSize: normalizeWidth('12%', 0.5),
+    fontSize: normalizeWidth('12%', 0.3),
     fontWeight: 'bold'
   },
   desc: {

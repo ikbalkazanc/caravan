@@ -27,7 +27,7 @@ export default function DashboardScreen() {
         <Box
           background={{
             linearGradient: {
-              colors: [themes.color4, themes.color3],
+              colors: [themes.status == 'dark' ? themes.color4 : themes.custom1, themes.color3],
               start: [0, 0],
               end: [1, 1]
             }

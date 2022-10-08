@@ -70,9 +70,9 @@ const PasswordScreen = ({ ...props }) => {
   const failMessage = text('password.fail')
   const wtfMessage = text('password.wtf')
 
-  const DEFAULT_CELL_BG_COLOR = themes.text2
+  const DEFAULT_CELL_BG_COLOR = themes.status == 'dark' ? themes.text2 : themes.custom2
   const NOT_EMPTY_CELL_BG_COLOR = themes.color1
-  const ACTIVE_CELL_BG_COLOR = themes.text
+  const ACTIVE_CELL_BG_COLOR = themes.status == 'dark' ? themes.text2 : themes.color3
   styles.cell = { ...styles.cell, color: themes.blue }
   styles.title = { ...styles.title, color: themes.text }
   styles.subTitle = { ...styles.subTitle, color: themes.text }
@@ -133,7 +133,7 @@ const PasswordScreen = ({ ...props }) => {
           <Box
             background={{
               linearGradient: {
-                colors: [themes.color4, themes.color3],
+                colors: [themes.status == 'dark' ? themes.color4 : themes.custom1, themes.color3],
                 start: [0, 0],
                 end: [1, 1]
               }

@@ -4,6 +4,7 @@ import { Text, Center, View, StyleSheet, ActivityIndicator } from 'react-native'
 import { useDispatch } from 'react-redux'
 import { getSettings } from '../packages/storage'
 import { setLanguage } from '../redux/language'
+import Logo from '../public/assets/svg/logo1.svg'
 import { setDarkMode } from '../redux/theme'
 
 export default function LoadingScreen({ navigation }) {
@@ -33,6 +34,7 @@ export default function LoadingScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
+      <Logo width={'30%'} height={'30%'} style={{ alignSelf: 'center' }} />
       <ActivityIndicator size='large' color={'#007acc'} />
     </View>
   )
