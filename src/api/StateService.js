@@ -27,15 +27,20 @@ class StateService {
     const settings = await getSettings()
 
     const path = `http://${settings.ip}:${settings.port}?State=${code}${state}`
+    var response = undefined
     try {
-      await fetch(path)
+      response = await fetch(path)
     } catch (err) {
       console.log('Fetch başarısız', err)
       //alert('Path bu    ' + path + '   ' + err)
-      return false
+      return [false, undefined, undefined]
     }
 
-    return true
+    const data = await response.text()
+    if (data.length == 4) {
+      return [true, data.slice(0, 3), data.slice(3, 4) == '1' ? true : false]
+    }
+    return [false, undefined, undefined]
   }
 }
 

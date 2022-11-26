@@ -18,7 +18,7 @@ export default function KaanDesing() {
   }
   return (
     <Box style={{ width: '100%', height: '100%' }} justifyContent='space-evenly' alignItems={'center'} flex={1} flexDirection='row'>
-      {getImage()}
+      {getLogo()}
       <Text style={{ ...styles.title, color: getColor() }}>KAAN DESIGN</Text>
     </Box>
   )

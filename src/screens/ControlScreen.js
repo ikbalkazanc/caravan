@@ -8,7 +8,7 @@ import { ScreenContainer } from 'react-native-screens'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import ControlButton from '../components/control/control-button'
 import { buttons, defaultButtons } from '../constants/data/default-settings'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import HasNoConnection from '../components/has-no-connection'
 import { clearStorage, getSettings } from '../packages/storage'
 import StateService from '../api/StateService'
@@ -16,6 +16,8 @@ import { text } from '../packages/i18n'
 import { normalizeWidth } from '../packages/responsive'
 import { isTablet } from '../packages/device-info'
 import ControlTabletButton from '../components/control/control-button-tablet'
+import { setStateData } from '../redux/site'
+import { LAST_DATA_EDITED } from '../packages/state'
 
 const config = {
   dependencies: {
@@ -44,6 +46,7 @@ export { forceUpdate }
 export default function ControlScreen() {
   const themes = theme()
   const site = useSelector((state) => state.site)
+  const dispatch = useDispatch()
   const [buttons, setButtons] = React.useState(null)
   const [state, updateState] = React.useState()
   forceUpdate = React.useCallback(() => {
@@ -58,7 +61,42 @@ export default function ControlScreen() {
   }, [state, buttons])
 
   const clickButton = async (code, state) => {
-    return await StateService.setPinState(code, state)
+    var response = await StateService.setPinState(code, state)
+    if (response[0] == false) {
+      return false
+    }
+
+    if (code == response[1]) {
+      return true
+    }
+
+    const alp = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K']
+    var index = 0
+    var finded = false
+    for (var val of alp) {
+      if (val == response[1][2]) {
+        finded = true
+        break
+      }
+      index++
+    }
+    if (!finded) {
+      return false
+    }
+    var deepCopy = { ...site.data }
+    deepCopy.buttons = calculateButtonsArray(deepCopy.buttons, index, response[2])
+    LAST_DATA_EDITED.value = true
+    console.error('ROLE BUSINDAN BAŞKA BİR ROLE GELDİ', code, response[1])
+    dispatch(setStateData(deepCopy))
+
+    return false
+  }
+
+  const calculateButtonsArray = (buttons, index, val) => {
+    var p = buttons.slice(0, index)
+    var p2 = buttons.slice(index + 1, buttons.length - 1)
+    var arr = [...p, val, ...p2]
+    return arr
   }
 
   const renderButton = (button, key) => {

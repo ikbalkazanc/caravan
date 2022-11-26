@@ -1,4 +1,4 @@
-export const defaultState = {
+export var defaultState = {
   humidity: 0,
   water: 0,
   wasteWater: 0,
