@@ -2,7 +2,7 @@ const en = {
   hello: 'Merhaba',
   cancel: 'Cancel',
   loading: 'Loading...',
-  connected: 'Conencted',
+  connected: 'Connected',
   notConnected: 'No Connection',
   close: 'Disabled',
   control_desc: 'Press and hold to edit buttons.',

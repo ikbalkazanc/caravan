@@ -8,18 +8,24 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 export default function KaanDesing() {
   const themes = theme()
   const getLogo = () => {
-    return themes.status == 'dark' ? <LogoWhite width={hp('13%')} height={hp('13%')} /> : <Logo width={hp('13%')} height={hp('13%')} />
+    return themes.status == 'dark' ? <LogoWhite width={hp('12%')} height={hp('12%')} /> : <Logo width={hp('12%')} height={hp('12%')} />
   }
   const getColor = () => {
     return themes.status == 'dark' ? themes.text : '#003366'
   }
   const getImage = () => {
-    return <Image style={{ width: hp('10%'), height: hp('10%') }} source={require('../public/deepsea.jpg')} />
+    return <Image style={{ width: hp('40%'), height: hp('17%') }} source={require('../public/electro.png')} />
   }
+  /*
   return (
     <Box style={{ width: '100%', height: '100%' }} justifyContent='space-evenly' alignItems={'center'} flex={1} flexDirection='row'>
       {getLogo()}
       <Text style={{ ...styles.title, color: getColor() }}>KAAN DESIGN</Text>
+    </Box>
+  )*/
+  return (
+    <Box style={{ width: '100%', height: '100%', marginTop: hp('2%') }} justifyContent='space-evenly' alignItems={'center'} flex={1} flexDirection='row'>
+      {getImage()}
     </Box>
   )
 }

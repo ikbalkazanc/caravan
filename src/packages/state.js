@@ -8,8 +8,8 @@ import store from '../redux'
 
 var failFetchCounter = 0
 const BUTTONS_START_INDEX = 6
-const BUTTONS_COUNT = 11
-const SENSORS_START_INDEX = 17
+const BUTTONS_COUNT = 16
+const SENSORS_START_INDEX = 22
 const SENSORS_COUNT = 3
 
 var LAST_DATA = undefined

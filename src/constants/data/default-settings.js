@@ -75,6 +75,41 @@ const defaultButtons = [
     icon: 'power',
     order: 11,
     disable: false
+  },
+  {
+    name: 'Röle 12',
+    code: '00L',
+    icon: 'power',
+    order: 12,
+    disable: false
+  },
+  {
+    name: 'Röle 13',
+    code: '00M',
+    icon: 'power',
+    order: 13,
+    disable: false
+  },
+  {
+    name: 'Röle 14',
+    code: '00N',
+    icon: 'power',
+    order: 14,
+    disable: false
+  },
+  {
+    name: 'Röle 15',
+    code: '00O',
+    icon: 'power',
+    order: 15,
+    disable: false
+  },
+  {
+    name: 'Röle 16',
+    code: '00P',
+    icon: 'power',
+    order: 16,
+    disable: false
   }
 ]
 
