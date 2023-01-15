@@ -75,7 +75,8 @@ const defaultButtons = [
     icon: 'power',
     order: 11,
     disable: false
-  },
+  }
+  /*
   {
     name: 'Röle 12',
     code: '00L',
@@ -111,6 +112,7 @@ const defaultButtons = [
     order: 16,
     disable: false
   }
+  */
 ]
 
 export const defaultSettings = {

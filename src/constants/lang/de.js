@@ -15,7 +15,8 @@ const de = {
     settings: 'Einstellungen',
     control: 'Steuerung',
     sensors: 'Detektoren',
-    panel: 'IoT KAAN',
+    // panel: 'IoT KAAN',
+    panel: 'Marka Karavan ',
     panel2: 'Panel'
   },
   measures: {

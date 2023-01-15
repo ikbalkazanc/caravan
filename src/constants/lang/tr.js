@@ -15,7 +15,8 @@ const tr = {
     settings: 'Ayarlar',
     control: 'Kontrol',
     sensors: 'Dedektörler',
-    panel: 'IoT KAAN',
+    // panel: 'IoT KAAN',
+    panel: 'Marka Karavan ',
     panel2: 'Panel'
   },
   measures: {

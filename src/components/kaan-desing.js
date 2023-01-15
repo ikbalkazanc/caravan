@@ -14,7 +14,7 @@ export default function KaanDesing() {
     return themes.status == 'dark' ? themes.text : '#003366'
   }
   const getImage = () => {
-    return <Image style={{ width: hp('40%'), height: hp('17%') }} source={require('../public/electro.png')} />
+    return <Image style={{ width: hp('40%'), height: hp('17%') }} source={require('../public/markakaravan.png')} />
   }
   /*
   return (
