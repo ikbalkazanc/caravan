@@ -14,7 +14,7 @@ export default function KaanDesing() {
     return themes.status == 'dark' ? themes.text : '#003366'
   }
   const getImage = () => {
-    return <Image style={{ width: hp('40%'), height: hp('17%') }} source={require('../public/markakaravan.png')} />
+    return <Image style={{ width: hp('22%'), height: hp('11%') }} source={require('../public/enmarin.png')} />
   }
   /*
   return (
@@ -24,7 +24,7 @@ export default function KaanDesing() {
     </Box>
   )*/
   return (
-    <Box style={{ width: '100%', height: '100%', marginTop: hp('2%') }} justifyContent='space-evenly' alignItems={'center'} flex={1} flexDirection='row'>
+    <Box style={{ width: '100%', height: '100%', marginTop: hp('0%') }} justifyContent='space-evenly' alignItems={'center'} flex={1} flexDirection='row'>
       {getImage()}
     </Box>
   )
