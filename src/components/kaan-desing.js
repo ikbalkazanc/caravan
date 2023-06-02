@@ -14,15 +14,15 @@ export default function KaanDesing() {
     return themes.status == 'dark' ? themes.text : '#003366'
   }
   const getImage = () => {
-    return <Image style={{ width: hp('22%'), height: hp('11%') }} source={require('../public/enmarin.png')} />
+    return <Image style={{ width: hp('19%'), height: hp('13%') }} source={require('../public/karavanritmi.jpg')} />
   }
-  /*
+
   return (
     <Box style={{ width: '100%', height: '100%' }} justifyContent='space-evenly' alignItems={'center'} flex={1} flexDirection='row'>
       {getLogo()}
       <Text style={{ ...styles.title, color: getColor() }}>KAAN DESIGN</Text>
     </Box>
-  )*/
+  )
   return (
     <Box style={{ width: '100%', height: '100%', marginTop: hp('0%') }} justifyContent='space-evenly' alignItems={'center'} flex={1} flexDirection='row'>
       {getImage()}
